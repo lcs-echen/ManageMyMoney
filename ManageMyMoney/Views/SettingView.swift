@@ -8,7 +8,13 @@
 import SwiftUI
 
 struct SettingView: View {
+    // MARK: Stored Properties
     @State var saving: Double = 5
+    @State var entertainment: Double = 5
+    @State var expense1: Double = 5
+    @State var expense2: Double = 5
+    @State var expense3: Double = 5
+    // MARK: Computed Properties
     var body: some View {
         VStack (alignment: .leading){
 
@@ -22,7 +28,7 @@ struct SettingView: View {
                 .font(.title)
             VStack (alignment: .leading){
                 HStack {
-                    Text("Saving              ")
+                    Text("Saving               ")
                         .font(.title3)
                     Slider(value: $saving,
                            in: 0...100)
@@ -31,8 +37,46 @@ struct SettingView: View {
                     + Text("%")
                         .font(.title3)
                 }
-                Text("Entertainment")
-                    .font(.title3)
+                HStack {
+                    Text("Entertainment  ")
+                        .font(.title3)
+                    Slider(value: $entertainment,
+                           in: 0...100)
+                    Text("\(entertainment.formatted(.number.precision(.fractionLength(1))))")
+                        .font(.title3)
+                    + Text("%")
+                        .font(.title3)
+                }
+                HStack {
+                    TextField("Enter your own", text: Binding.constant(""))
+                        .font(.title3)
+                    Slider(value: $expense1,
+                           in: 0...100)
+                    Text("\(expense1.formatted(.number.precision(.fractionLength(1))))")
+                        .font(.title3)
+                    + Text("%")
+                        .font(.title3)
+                }
+                HStack {
+                    TextField("Enter your own", text: Binding.constant(""))
+                        .font(.title3)
+                    Slider(value: $expense2,
+                           in: 0...100)
+                    Text("\(expense2.formatted(.number.precision(.fractionLength(1))))")
+                        .font(.title3)
+                    + Text("%")
+                        .font(.title3)
+                }
+                HStack {
+                    TextField("Enter your own", text: Binding.constant(""))
+                        .font(.title3)
+                    Slider(value: $expense3,
+                           in: 0...100)
+                    Text("\(expense3.formatted(.number.precision(.fractionLength(1))))")
+                        .font(.title3)
+                    + Text("%")
+                        .font(.title3)
+                }
             }
             .padding()
             
