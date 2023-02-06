@@ -14,10 +14,16 @@ struct SettingView: View {
     @State var expense1: Double = 5
     @State var expense2: Double = 5
     @State var expense3: Double = 5
+    @State var cash: String = ""
+    var cashAsOptionalDouble: Double? {
+        guard let cash = Double(cash) else {
+            return nil
+        }
+        return cash
+    }
     // MARK: Computed Properties
     var body: some View {
         VStack (alignment: .leading){
-
             HStack{
                 Text("Cash on hand")
                     .font(.title)

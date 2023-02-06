@@ -11,7 +11,21 @@ import SwiftUI
 struct ManageMyMoneyApp: App {
     var body: some Scene {
         WindowGroup {
-            CartView()
+            TabView {
+                SettingView()
+                    .tabItem {
+                        Image(systemName: "gear")
+                        Text("Setting")}
+                WishesView()
+                    .tabItem {
+                        Image(systemName: "sparkles")
+                        Text("Wish")}
+                CartView()
+                    .tabItem {
+                        Image(systemName: "cart")
+                        Text("Calcuation") }
+            }
+            .accentColor(.green)
         }
     }
 }
