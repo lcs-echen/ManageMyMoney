@@ -15,23 +15,41 @@ struct SettingView: View {
     @State var expense2: Double = 5
     @State var expense3: Double = 5
     @State var cash: String = ""
+    
+    // MARK: Computed Properties
     var cashAsOptionalDouble: Double? {
         guard let cash = Double(cash) else {
             return nil
         }
         return cash
     }
-    // MARK: Computed Properties
+    var expensesPercentage: Double {
+        return saving + entertainment + expense1 + expense2 + expense3
+    }
     var body: some View {
         VStack (alignment: .leading){
-            HStack{
+            Text("Manege My Money")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+                .padding(.bottom, 15)
+            VStack (alignment: .leading){
                 Text("Cash on hand")
                     .font(.title)
-                Text("$")
-                TextField("Enter a numeric value", text: Binding.constant(""))
+                HStack {
+                    Text("$")
+                    TextField("Enter a numeric value", text: Binding.constant(""))
+                }
+                .padding(.bottom, 5)
             }
-            Text("Expenses")
-                .font(.title)
+            HStack {
+                Text("Expenses")
+                    .font(.title)
+                Spacer()
+                Text("\(expensesPercentage.formatted(.number.precision(.fractionLength(1))))")
+                    .font(.title)
+                + Text("%")
+                    .font(.title2)
+            }
             VStack (alignment: .leading){
                 HStack {
                     Text("Saving               ")
@@ -111,7 +129,6 @@ struct SettingView: View {
             Spacer()
         }
         .padding()
-        .navigationTitle("Manage My Money")
     }
 }
 
