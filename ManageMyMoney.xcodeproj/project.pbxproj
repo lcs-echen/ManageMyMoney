@@ -8,17 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		CA6CA74829907F670068A63C /* ManageMyMoneyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6CA74729907F670068A63C /* ManageMyMoneyApp.swift */; };
-		CA6CA74A29907F670068A63C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6CA74929907F670068A63C /* ContentView.swift */; };
 		CA6CA74C29907F690068A63C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA6CA74B29907F690068A63C /* Assets.xcassets */; };
 		CA6CA74F29907F690068A63C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA6CA74E29907F690068A63C /* Preview Assets.xcassets */; };
+		CA6CA75829907FA70068A63C /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6CA75729907FA70068A63C /* SettingView.swift */; };
+		CA6CA75A29907FCC0068A63C /* WishesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6CA75929907FCC0068A63C /* WishesView.swift */; };
+		CA6CA75C29907FDC0068A63C /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6CA75B29907FDC0068A63C /* CartView.swift */; };
+		CA6CA75E29907FF80068A63C /* WishesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6CA75D29907FF80068A63C /* WishesModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CA6CA74429907F660068A63C /* ManageMyMoney.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManageMyMoney.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA6CA74729907F670068A63C /* ManageMyMoneyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageMyMoneyApp.swift; sourceTree = "<group>"; };
-		CA6CA74929907F670068A63C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CA6CA74B29907F690068A63C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA6CA74E29907F690068A63C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CA6CA75729907FA70068A63C /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		CA6CA75929907FCC0068A63C /* WishesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishesView.swift; sourceTree = "<group>"; };
+		CA6CA75B29907FDC0068A63C /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
+		CA6CA75D29907FF80068A63C /* WishesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishesModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +58,8 @@
 			isa = PBXGroup;
 			children = (
 				CA6CA74729907F670068A63C /* ManageMyMoneyApp.swift */,
-				CA6CA74929907F670068A63C /* ContentView.swift */,
+				CA6CA75629907F8B0068A63C /* Views */,
+				CA6CA75529907F820068A63C /* Model */,
 				CA6CA74B29907F690068A63C /* Assets.xcassets */,
 				CA6CA74D29907F690068A63C /* Preview Content */,
 			);
@@ -65,6 +72,24 @@
 				CA6CA74E29907F690068A63C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CA6CA75529907F820068A63C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CA6CA75D29907FF80068A63C /* WishesModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CA6CA75629907F8B0068A63C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CA6CA75729907FA70068A63C /* SettingView.swift */,
+				CA6CA75929907FCC0068A63C /* WishesView.swift */,
+				CA6CA75B29907FDC0068A63C /* CartView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +162,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA6CA74A29907F670068A63C /* ContentView.swift in Sources */,
+				CA6CA75A29907FCC0068A63C /* WishesView.swift in Sources */,
 				CA6CA74829907F670068A63C /* ManageMyMoneyApp.swift in Sources */,
+				CA6CA75E29907FF80068A63C /* WishesModel.swift in Sources */,
+				CA6CA75C29907FDC0068A63C /* CartView.swift in Sources */,
+				CA6CA75829907FA70068A63C /* SettingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
