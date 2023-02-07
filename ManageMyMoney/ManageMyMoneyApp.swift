@@ -23,7 +23,7 @@ struct ManageMyMoneyApp: App {
                 CartView()
                     .tabItem {
                         Image(systemName: "cart")
-                        Text("Calcuation") }
+                        Text("Cart") }
             }
             .accentColor(.green)
         }

@@ -11,6 +11,10 @@ struct WishesView: View {
     var body: some View {
         HStack {
             VStack (alignment: .leading){
+                Text("Wishes")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .padding(.bottom, 15)
                 Group{
                     Text("Your Wish: ")
                         .font(.title2)
@@ -29,7 +33,6 @@ struct WishesView: View {
                     Stepper("2", value: Binding.constant(2), in: 0...20)
                         .padding(.bottom, 15)
                 }
-
                 HStack {
                     Text("Total Cost: ")
                         .font(.title2)
@@ -42,14 +45,14 @@ struct WishesView: View {
             .padding()
             Spacer()
         }
-        .navigationTitle("WISHES")
+        
     }
 }
 
 struct WishesView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
+ 
             WishesView()
-        }
+
     }
 }

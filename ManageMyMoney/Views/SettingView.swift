@@ -26,9 +26,17 @@ struct SettingView: View {
     var expensesPercentage: Double {
         return saving + entertainment + expense1 + expense2 + expense3
     }
+    var left: String {
+        guard let cashAsDouble = cashAsOptionalDouble else {
+            return "Please provide a solid numeric value"
+        }
+        let result = cashAsDouble * (1 - expensesPercentage/100)
+        return "$" + result.formatted(.number.precision(.fractionLength(1)))
+    }
+    // Interface
     var body: some View {
         VStack (alignment: .leading){
-            Text("Manege My Money")
+            Text("Manage My Money")
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .padding(.bottom, 15)
@@ -37,7 +45,7 @@ struct SettingView: View {
                     .font(.title)
                 HStack {
                     Text("$")
-                    TextField("Enter a numeric value", text: Binding.constant(""))
+                    TextField("Enter a numeric value", text: $cash)
                 }
                 .padding(.bottom, 5)
             }
@@ -108,9 +116,8 @@ struct SettingView: View {
                 VStack {
                     Text("Left")
                         .font(.title)
-                    Text("$")
-                        .font(.title2)
-                    + Text("450")
+
+                    Text(left)
                         .font(.title2)
                 }
                 .padding(.leading, 30)
