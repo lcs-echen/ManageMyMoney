@@ -11,9 +11,9 @@ struct SettingView: View {
     // MARK: Stored Properties
     @State var saving: Double = 5
     @State var entertainment: Double = 5
-    @State var expense1: Double = 5
-    @State var expense2: Double = 5
-    @State var expense3: Double = 5
+    @State var expense1: Double = 0
+    @State var expense2: Double = 0
+    @State var expense3: Double = 0
     @State var cash: String = ""
     
     // MARK: Computed Properties

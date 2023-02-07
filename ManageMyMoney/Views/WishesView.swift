@@ -90,7 +90,7 @@ struct WishesView: View {
 struct WishesView_Previews: PreviewProvider {
     static var previews: some View {
  
-        WishesView(history: Binding.constant(WishModelForPreviews))
+        WishesView(history: Binding.constant(wishModelForPreviews))
 
     }
 }

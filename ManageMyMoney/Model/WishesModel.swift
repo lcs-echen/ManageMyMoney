@@ -16,6 +16,6 @@ struct Wishes: Identifiable {
 let wish1 = Wishes(name: "Hat", cost: "10", amount: "2")
 let wish2 = Wishes(name: "Sun Glasses", cost: "5", amount: "4")
 
-let WishModelForPreviews = [wish1, wish2]
+let wishModelForPreviews = [wish1, wish2]
     
 

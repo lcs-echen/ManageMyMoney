@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct CartView: View {
+    @Binding var history: [Wishes]
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("Cart")
+        }
     }
 }
 
 struct CartView_Previews: PreviewProvider {
     static var previews: some View {
-        CartView()
+        CartView(history: Binding.constant(wishModelForPreviews))
     }
 }
