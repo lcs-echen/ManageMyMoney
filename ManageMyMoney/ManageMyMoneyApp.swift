@@ -17,7 +17,7 @@ struct ManageMyMoneyApp: App {
                     .tabItem {
                         Image(systemName: "gear")
                         Text("Setting")}
-                WishesView()
+                WishesView(history: $history)
                     .tabItem {
                         Image(systemName: "sparkles")
                         Text("Wish")}

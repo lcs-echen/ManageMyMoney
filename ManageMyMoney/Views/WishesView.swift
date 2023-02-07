@@ -11,7 +11,7 @@ struct WishesView: View {
     @State var wish: String = ""
     @State var cost: String = ""
     @State var amount: Double = 1
-    
+    @Binding var history: [Wishes]
     var costAsOptionalDouble: Double? {
         guard let cost = Double(cost) else {
             return nil
@@ -58,6 +58,26 @@ struct WishesView: View {
                         .font(.title2)
                         .multilineTextAlignment(.trailing)
                 }
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        // Create a string version of the people count
+                        let amount = String(amount)
+                        
+                        // Create the prior result, all put together into an instance of Result
+                        let priorResult = Wishes(name: wish, cost: cost, amount: amount)
+                        
+                        // Save the prior result to the history
+                        history.append(priorResult)
+                        
+                    }, label: {
+                        Text("Add to Cart")
+                            .font(.headline.smallCaps())
+                    })
+                    .buttonStyle(.bordered)
+                    Spacer()
+                }
+                .padding(.top, 30)
                 Spacer()
             }
             .padding()
@@ -70,7 +90,7 @@ struct WishesView: View {
 struct WishesView_Previews: PreviewProvider {
     static var previews: some View {
  
-            WishesView()
+        WishesView(history: Binding.constant(WishModelForPreviews))
 
     }
 }
