@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct WishesView: View {
+    @State var wish: String = ""
+    @State var cost: String = ""
+    
     var body: some View {
         HStack {
             VStack (alignment: .leading){

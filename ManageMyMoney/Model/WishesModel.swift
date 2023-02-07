@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+struct Wishes: Identifiable {
+    let id = UUID()
+    let name: String
+    let cost: String
+    let amount: String
+}
+    
+

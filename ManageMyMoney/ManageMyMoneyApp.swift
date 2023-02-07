@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct ManageMyMoneyApp: App {
+    @State var history: [Wishes] = []
     var body: some Scene {
         WindowGroup {
             TabView {

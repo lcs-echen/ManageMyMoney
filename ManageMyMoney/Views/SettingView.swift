@@ -110,17 +110,18 @@ struct SettingView: View {
                         .font(.title3)
                 }
             }
-            .padding()
+            .padding(.bottom, 30)
             
-            HStack{
+            HStack(alignment: .top){
                 VStack {
                     Text("Left")
                         .font(.title)
 
                     Text(left)
                         .font(.title2)
+                        .frame(width: 200)
                 }
-                .padding(.leading, 30)
+                
                 Spacer()
                 VStack {
                     Text("Wish")
