@@ -10,7 +10,21 @@ import SwiftUI
 struct WishesView: View {
     @State var wish: String = ""
     @State var cost: String = ""
+    @State var amount: Double = 1
     
+    var costAsOptionalDouble: Double? {
+        guard let cost = Double(cost) else {
+            return nil
+        }
+        return cost
+    }
+    var totalCost: String {
+        guard let cost = costAsOptionalDouble else {
+            return "Please provide a solid numeric value for estimated cost."
+        }
+        let totalCost = cost * amount
+        return "$" + totalCost.formatted(.number.precision(.fractionLength(1)))
+    }
     var body: some View {
         HStack {
             VStack (alignment: .leading){
@@ -27,21 +41,22 @@ struct WishesView: View {
                 Group {
                     Text("Estimated cost? ")
                         .font(.title2)
-                    TextField("Please enter the estimated cost", text: Binding.constant(""))
+                    TextField("Please enter the estimated cost", text: $cost)
                         .padding(.bottom, 10)
                 }
                 Group{
                     Text("Amount/Times")
                         .font(.title2)
-                    Stepper("2", value: Binding.constant(2), in: 0...20)
+                    Stepper("\(amount.formatted(.number.precision(.fractionLength(0))))", value: $amount, in: 1...100)
                         .padding(.bottom, 15)
                 }
                 HStack {
                     Text("Total Cost: ")
                         .font(.title2)
                     Spacer()
-                    Text("$450")
+                    Text(totalCost)
                         .font(.title2)
+                        .multilineTextAlignment(.trailing)
                 }
                 Spacer()
             }
