@@ -10,12 +10,14 @@ import SwiftUI
 struct SettingView: View {
     // MARK: Stored Properties
     @State var saving: Double = 5
-    @State var entertainment: Double = 5
+    @State var medical: Double = 5
     @State var expense1: Double = 0
     @State var expense2: Double = 0
     @State var expense3: Double = 0
     @State var cash: String = ""
-    
+    @State var ownExpense1: String = ""
+    @State var ownExpense2: String = ""
+    @State var ownExpense3: String = ""
     // MARK: Computed Properties
     var cashAsOptionalDouble: Double? {
         guard let cash = Double(cash) else {
@@ -24,7 +26,7 @@ struct SettingView: View {
         return cash
     }
     var expensesPercentage: Double {
-        return saving + entertainment + expense1 + expense2 + expense3
+        return saving + medical + expense1 + expense2 + expense3
     }
     var left: String {
         guard let cashAsDouble = cashAsOptionalDouble else {
@@ -70,17 +72,17 @@ struct SettingView: View {
                         .font(.title3)
                 }
                 HStack {
-                    Text("Entertainment  ")
+                    Text("Medical             ")
                         .font(.title3)
-                    Slider(value: $entertainment,
+                    Slider(value: $medical,
                            in: 0...100)
-                    Text("\(entertainment.formatted(.number.precision(.fractionLength(1))))")
+                    Text("\(medical.formatted(.number.precision(.fractionLength(1))))")
                         .font(.title3)
                     + Text("%")
                         .font(.title3)
                 }
                 HStack {
-                    TextField("Enter your own", text: Binding.constant(""))
+                    TextField("Enter your own", text: $expense1)
                         .font(.title3)
                     Slider(value: $expense1,
                            in: 0...100)
@@ -90,7 +92,7 @@ struct SettingView: View {
                         .font(.title3)
                 }
                 HStack {
-                    TextField("Enter your own", text: Binding.constant(""))
+                    TextField("Enter your own", text: $expense2)
                         .font(.title3)
                     Slider(value: $expense2,
                            in: 0...100)
@@ -100,7 +102,7 @@ struct SettingView: View {
                         .font(.title3)
                 }
                 HStack {
-                    TextField("Enter your own", text: Binding.constant(""))
+                    TextField("Enter your own", text: $expense3)
                         .font(.title3)
                     Slider(value: $expense3,
                            in: 0...100)

@@ -11,7 +11,7 @@ struct WishesView: View {
     @State var wish: String = ""
     @State var cost: String = ""
     @State var amount: Double = 1
-    @Binding var history: [Wishes]
+    @Binding var history: [Wishes] 
     var costAsOptionalDouble: Double? {
         guard let cost = Double(cost) else {
             return nil
@@ -20,7 +20,7 @@ struct WishesView: View {
     }
     var totalCost: String {
         guard let cost = costAsOptionalDouble else {
-            return "Please provide a solid numeric value for estimated cost."
+            return "Please provide a solid numeric value for estimated cost"
         }
         let totalCost = cost * amount
         return "$" + totalCost.formatted(.number.precision(.fractionLength(1)))
@@ -35,14 +35,17 @@ struct WishesView: View {
                 Group{
                     Text("Your Wish: ")
                         .font(.title2)
-                    TextField("Please enter your wish", text: Binding.constant(""))
+                    TextField("Please enter your wish", text: $wish)
                         .padding(.bottom, 10)
                 }
                 Group {
                     Text("Estimated cost? ")
                         .font(.title2)
-                    TextField("Please enter the estimated cost", text: $cost)
-                        .padding(.bottom, 10)
+                    HStack (alignment: .top) {
+                        Text("$")
+                        TextField("Please enter the estimated cost", text: $cost)
+                            .padding(.bottom, 10)
+                    }
                 }
                 Group{
                     Text("Amount/Times")
@@ -61,7 +64,6 @@ struct WishesView: View {
                 HStack {
                     Spacer()
                     Button(action: {
-                        // Create a string version of the people count
                         let amount = String(amount)
                         
                         // Create the prior result, all put together into an instance of Result

@@ -26,7 +26,7 @@ struct ManageMyMoneyApp: App {
                         Image(systemName: "cart")
                         Text("Cart") }
             }
-            .accentColor(.green)
+            .accentColor(.purple)
         }
     }
 }
