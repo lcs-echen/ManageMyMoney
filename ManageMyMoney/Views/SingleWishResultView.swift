@@ -18,7 +18,7 @@ struct SingleWishResultView: View {
                 .padding(.leading, 30)
             HStack(alignment: .center) {
                 Text("x" + priorResult.amount)
-                    .font(.title3)
+                    .font(.subheadline)
                     .frame(width: 35, height: 35)
                     .overlay(RoundedRectangle(cornerRadius: 10)
                         .stroke(Color.gray, lineWidth: 3))
@@ -26,7 +26,7 @@ struct SingleWishResultView: View {
                     .fontWeight(.bold)
                 Spacer()
                 Text("$" + priorResult.cost)
-                    .font(Font.system(size: 33))
+                    .font(Font.system(size: 30))
                     .fontWeight(.bold)
                     .padding(.trailing, 10)
                 

@@ -7,8 +7,12 @@
 
 import SwiftUI
 
+
 struct CartView: View {
+    
+    @State var totalSpending: Double = 0
     @Binding var history: [Wishes]
+    
     var body: some View {
         VStack (alignment: .leading){
             Text("Cart")
@@ -19,20 +23,37 @@ struct CartView: View {
                 ForEach(history) { history in
                     SingleWishResultView(priorResult: history)
                 }
+                .onDelete{ offsets in
+                    history.remove(atOffsets: offsets)
+                }
             }
             Spacer()
             HStack{
                 Text("Total: ")
-                    .fontWeight(.bold)
+                    .fontWeight(.semibold)
                     .font(.title)
                 Spacer()
-                Text("$15")
-                    .font(.title)
+                Text("$\(totalSpending)")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
             }
             .padding(.horizontal, 30)
             .padding(.bottom, 10)
             .padding(.top, 20)
-            .background(Color.orange)
+            
+        }
+        .onAppear {
+            // Create a running total that is zero
+            var total = 0.0
+            // Iterate over each item and add to the running total
+            for item in history {
+                guard let cost = Double(item.cost) else {
+                    continue
+                }
+                total += cost
+            }
+            // Update the view
+            totalSpending = total
         }
     }
 }

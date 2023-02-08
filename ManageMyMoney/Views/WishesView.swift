@@ -64,7 +64,7 @@ struct WishesView: View {
                 HStack {
                     Spacer()
                     Button(action: {
-                        let amount = String(amount)
+                        let amount = String(amount.formatted(.number.precision(.fractionLength(0))))
                         
                         // Create the prior result, all put together into an instance of Result
                         let priorResult = Wishes(name: wish, cost: cost, amount: amount)
