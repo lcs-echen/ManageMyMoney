@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SettingView: View {
     // MARK: Stored Properties
+    @Binding var totalSpending: Double
     @State var saving: Double = 5
     @State var medical: Double = 5
     @State var expense1: Double = 0
@@ -130,7 +131,7 @@ struct SettingView: View {
                         .font(.title)
                     Text("$")
                         .font(.title2)
-                    + Text("450")
+                    + Text("\(totalSpending)")
                         .font(.title2)
                 }
                 .padding(.trailing, 30)
@@ -145,7 +146,7 @@ struct SettingView: View {
 struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SettingView()
+            SettingView(totalSpending: Binding.constant(325.00))
         }
     }
 }

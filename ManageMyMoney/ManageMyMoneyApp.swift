@@ -10,10 +10,11 @@ import SwiftUI
 @main
 struct ManageMyMoneyApp: App {
     @State var history: [Wishes] = []
+    @State var totalSpending: Double = 0
     var body: some Scene {
         WindowGroup {
             TabView {
-                SettingView()
+                SettingView(totalSpending: $totalSpending)
                     .tabItem {
                         Image(systemName: "gear")
                         Text("Setting")}
@@ -21,7 +22,7 @@ struct ManageMyMoneyApp: App {
                     .tabItem {
                         Image(systemName: "sparkles")
                         Text("Wish")}
-                CartView(history: $history)
+                CartView(totalSpending: $totalSpending, history: $history)
                     .tabItem {
                         Image(systemName: "cart")
                         Text("Cart") }

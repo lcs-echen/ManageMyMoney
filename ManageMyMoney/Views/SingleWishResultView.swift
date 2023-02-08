@@ -33,7 +33,7 @@ struct SingleWishResultView: View {
             
             }
             .padding(.horizontal, 30)
-            Divider()
+//            Divider()
         }
         
     }

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CartView: View {
     
-    @State var totalSpending: Double = 0
+    @Binding var totalSpending: Double
     @Binding var history: [Wishes]
     
     var body: some View {
@@ -19,11 +19,11 @@ struct CartView: View {
                 .padding(.leading, 30)
                 .font(.largeTitle)
                 .fontWeight(.bold)
-            ScrollView {
+            List {
                 ForEach(history) { history in
                     SingleWishResultView(priorResult: history)
                 }
-                .onDelete{ offsets in
+                .onDelete { offsets in
                     history.remove(atOffsets: offsets)
                 }
             }
@@ -33,7 +33,7 @@ struct CartView: View {
                     .fontWeight(.semibold)
                     .font(.title)
                 Spacer()
-                Text("$\(totalSpending)")
+                Text("$\(totalSpending.formatted(.number.precision(.fractionLength(2))))")
                     .font(.largeTitle)
                     .fontWeight(.bold)
             }
@@ -47,10 +47,7 @@ struct CartView: View {
             var total = 0.0
             // Iterate over each item and add to the running total
             for item in history {
-                guard let cost = Double(item.cost) else {
-                    continue
-                }
-                total += cost
+                total += Double(item.cost) ?? 0
             }
             // Update the view
             totalSpending = total
@@ -61,6 +58,6 @@ struct CartView: View {
 
 struct CartView_Previews: PreviewProvider {
     static var previews: some View {
-        CartView(history: Binding.constant(wishModelForPreviews))
+        CartView(totalSpending: Binding.constant(325.00), history: Binding.constant(wishModelForPreviews))
     }
 }
