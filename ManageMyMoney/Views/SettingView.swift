@@ -82,7 +82,7 @@ struct SettingView: View {
                         .font(.title3)
                 }
                 HStack {
-                    TextField("Enter your own", text: $expense1)
+                    TextField("Enter your own", text: $ownExpense1)
                         .font(.title3)
                     Slider(value: $expense1,
                            in: 0...100)
@@ -92,7 +92,7 @@ struct SettingView: View {
                         .font(.title3)
                 }
                 HStack {
-                    TextField("Enter your own", text: $expense2)
+                    TextField("Enter your own", text: $ownExpense2)
                         .font(.title3)
                     Slider(value: $expense2,
                            in: 0...100)
@@ -102,7 +102,7 @@ struct SettingView: View {
                         .font(.title3)
                 }
                 HStack {
-                    TextField("Enter your own", text: $expense3)
+                    TextField("Enter your own", text: $ownExpense3)
                         .font(.title3)
                     Slider(value: $expense3,
                            in: 0...100)
