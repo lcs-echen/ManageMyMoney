@@ -18,17 +18,20 @@ struct SingleWishResultView: View {
             HStack(alignment: .center) {
                 Text("x" + priorResult.amount)
                     .font(.subheadline)
-                    .frame(width: 35, height: 35)
+                    .frame(width: 30, height: 30)
                     .overlay(RoundedRectangle(cornerRadius: 10)
                         .stroke(Color.gray, lineWidth: 3))
                     .foregroundColor(.gray)
                     .fontWeight(.bold)
                 Spacer()
-                Text("$" + priorResult.cost)
-                    .font(Font.system(size: 30))
-                    .fontWeight(.bold)
-                    .padding(.trailing, 10)
+                Text("$")
                     .foregroundColor(Color("Orange"))
+                    .font(Font.system(size: 20))
+                + Text(priorResult.cost)
+                    .font(Font.system(size: 32))
+                    .fontWeight(.bold)
+                    .foregroundColor(Color("Orange"))
+                    
                 
             
             }

@@ -31,10 +31,10 @@ struct SettingView: View {
     }
     var left: String {
         guard let cashAsDouble = cashAsOptionalDouble else {
-            return "Please provide a solid numeric value"
+            return "0.00"
         }
         let result = cashAsDouble * (1 - expensesPercentage/100)
-        return "$" + result.formatted(.number.precision(.fractionLength(1)))
+        return result.formatted(.number.precision(.fractionLength(2)))
     }
     // Interface
     var body: some View {
@@ -42,105 +42,128 @@ struct SettingView: View {
             Text("Manage My Money")
                 .font(.largeTitle)
                 .fontWeight(.bold)
-                .padding(.bottom, 15)
-            VStack (alignment: .leading){
-                Text("Cash on hand")
-                    .font(.title)
-                HStack {
-                    Text("$")
-                    TextField("Enter a numeric value", text: $cash)
+                .padding(.vertical, 10)
+                .padding(.leading, 8)
+            VStack {
+                VStack (alignment: .leading){
+                    Text("Cash on hand")
+                        .font(.title)
+                    HStack {
+                        Text("$")
+                        TextField("Enter a numeric value", text: $cash)
+                    }
+                    .padding(.bottom, 5)
                 }
-                .padding(.bottom, 5)
+                HStack {
+                    Text("Expenses")
+                        .font(.title)
+                    Spacer()
+                    Text("\(expensesPercentage.formatted(.number.precision(.fractionLength(1))))")
+                        .font(.title)
+                    + Text("%")
+                        .font(.title2)
+                }
+                VStack (alignment: .leading){
+                    HStack {
+                        Text("Saving               ")
+                            .font(.title3)
+                        Slider(value: $saving,
+                               in: 0...100)
+                        Text("\(saving.formatted(.number.precision(.fractionLength(1))))")
+                            .font(.title3)
+                        + Text("%")
+                            .font(.title3)
+                    }
+                    HStack {
+                        Text("Medical             ")
+                            .font(.title3)
+                        Slider(value: $medical,
+                               in: 0...100)
+                        Text("\(medical.formatted(.number.precision(.fractionLength(1))))")
+                            .font(.title3)
+                        + Text("%")
+                            .font(.title3)
+                    }
+                    HStack {
+                        TextField("Enter your own", text: $ownExpense1)
+                            .font(.title3)
+                        Slider(value: $expense1,
+                               in: 0...100)
+                        Text("\(expense1.formatted(.number.precision(.fractionLength(1))))")
+                            .font(.title3)
+                        + Text("%")
+                            .font(.title3)
+                    }
+                    HStack {
+                        TextField("Enter your own", text: $ownExpense2)
+                            .font(.title3)
+                        Slider(value: $expense2,
+                               in: 0...100)
+                        Text("\(expense2.formatted(.number.precision(.fractionLength(1))))")
+                            .font(.title3)
+                        + Text("%")
+                            .font(.title3)
+                    }
+                    HStack {
+                        TextField("Enter your own", text: $ownExpense3)
+                            .font(.title3)
+                        Slider(value: $expense3,
+                               in: 0...100)
+                        Text("\(expense3.formatted(.number.precision(.fractionLength(1))))")
+                            .font(.title3)
+                        + Text("%")
+                            .font(.title3)
+                    }
+                }
+                .padding(.bottom, 30)
             }
-            HStack {
-                Text("Expenses")
-                    .font(.title)
-                Spacer()
-                Text("\(expensesPercentage.formatted(.number.precision(.fractionLength(1))))")
-                    .font(.title)
-                + Text("%")
-                    .font(.title2)
-            }
-            VStack (alignment: .leading){
-                HStack {
-                    Text("Saving               ")
-                        .font(.title3)
-                    Slider(value: $saving,
-                           in: 0...100)
-                    Text("\(saving.formatted(.number.precision(.fractionLength(1))))")
-                        .font(.title3)
-                    + Text("%")
-                        .font(.title3)
-                }
-                HStack {
-                    Text("Medical             ")
-                        .font(.title3)
-                    Slider(value: $medical,
-                           in: 0...100)
-                    Text("\(medical.formatted(.number.precision(.fractionLength(1))))")
-                        .font(.title3)
-                    + Text("%")
-                        .font(.title3)
-                }
-                HStack {
-                    TextField("Enter your own", text: $ownExpense1)
-                        .font(.title3)
-                    Slider(value: $expense1,
-                           in: 0...100)
-                    Text("\(expense1.formatted(.number.precision(.fractionLength(1))))")
-                        .font(.title3)
-                    + Text("%")
-                        .font(.title3)
-                }
-                HStack {
-                    TextField("Enter your own", text: $ownExpense2)
-                        .font(.title3)
-                    Slider(value: $expense2,
-                           in: 0...100)
-                    Text("\(expense2.formatted(.number.precision(.fractionLength(1))))")
-                        .font(.title3)
-                    + Text("%")
-                        .font(.title3)
-                }
-                HStack {
-                    TextField("Enter your own", text: $ownExpense3)
-                        .font(.title3)
-                    Slider(value: $expense3,
-                           in: 0...100)
-                    Text("\(expense3.formatted(.number.precision(.fractionLength(1))))")
-                        .font(.title3)
-                    + Text("%")
-                        .font(.title3)
-                }
-            }
-            .padding(.bottom, 30)
+            .padding(.horizontal, 10)
             
             HStack(alignment: .top){
+            
                 VStack {
+                    
                     Text("Left")
                         .font(.title)
-
-                    Text(left)
+                        .padding(.bottom, 1)
+                        .fontWeight(.bold)
+                    Text("$")
                         .font(.title2)
-                        .frame(width: 150)
+                        .fontWeight(.semibold)
+                        
+                    +
+                    Text(left)
+                        .font(.title)
+                        .fontWeight(.semibold)
+                        
                 }
-                
-                Spacer()
+                .frame(width: 180)
+                .foregroundColor(Color("Orange"))
+               
                 VStack {
                     Text("Wish")
                         .font(.title)
+                        .padding(.bottom, 1)
+                        .fontWeight(.bold)
                     Text("$")
                         .font(.title2)
+                        .fontWeight(.semibold)
+                        
                     + Text("\(totalSpending.formatted(.number.precision(.fractionLength(2))))")
-                        .font(.title2)
+                        .font(.title)
+                        .fontWeight(.semibold)
+                        
+                    
                 }
+                .frame(width: 150)
+                .foregroundColor(Color("Orange"))
                 
                 
             }
             .padding(.horizontal, 10)
             Spacer()
         }
-        .padding()
+        .padding(10)
     }
 }
 
