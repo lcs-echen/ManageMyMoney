@@ -11,7 +11,7 @@ struct SingleWishResultView: View {
     let priorResult: Wishes
     
     var body: some View {
-        VStack (alignment: .leading){
+        VStack (alignment: .leading, spacing: 9.0){
             Text(priorResult.name)
                 .font(Font.system(size: 25))
                 .fontWeight(.semibold)
@@ -27,7 +27,7 @@ struct SingleWishResultView: View {
                 Text("$")
                     .foregroundColor(Color("Orange"))
                     .font(Font.system(size: 20))
-                + Text(priorResult.cost)
+                + Text(priorResult.totalCost)
                     .font(Font.system(size: 32))
                     .fontWeight(.bold)
                     .foregroundColor(Color("Orange"))
@@ -38,6 +38,7 @@ struct SingleWishResultView: View {
             
         }
         .padding(.horizontal, 10)
+        .padding(.vertical, 5)
         
     }
     

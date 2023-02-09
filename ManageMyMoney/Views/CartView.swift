@@ -24,7 +24,6 @@ struct CartView: View {
                 .fontWeight(.bold)
             Text("Swipe to delete")
                 .padding(.leading, 30)
-            
                 .font(.headline)
                 .fontWeight(.light)
             
@@ -32,19 +31,13 @@ struct CartView: View {
                 ForEach(history) { history in
                     SingleWishResultView(priorResult: history)
                 }
-                .onMove { source, destination in
-                    history.move(fromOffsets: source, toOffset: destination)
-                }
                 .onDelete { offsets in
                     history.remove(atOffsets: offsets)
                 }
             }
-            .toolbar {
-                ToolbarItem { EditButton() }
-            }
             
             Spacer()
-            HStack{
+            HStack {
                 Text("Total: ")
                     .fontWeight(.semibold)
                     .font(.title)
@@ -52,7 +45,7 @@ struct CartView: View {
                 Text("$")
                     .foregroundColor(Color("Orange"))
                     .font(.title)
-                    .fontWeight(.bold)
+                    .fontWeight(.semibold)
                 + Text ("\(totalSpending.formatted(.number.precision(.fractionLength(2))))")
                     .font(.largeTitle)
                     .fontWeight(.bold)
@@ -60,18 +53,18 @@ struct CartView: View {
                 
             }
             .padding(.horizontal, 30)
-            .padding(.bottom, 20)
+            .padding(.top, 8)
+            .padding(.bottom, 25)
             
             
             
         }
-        .toolbar { EditButton() }
         .onAppear {
             // Create a running total that is zero
             var total = 0.0
             // Iterate over each item and add to the running total
             for item in history {
-                total += Double(item.cost) ?? 0
+                total += Double(item.totalCost) ?? 0
             }
             // Update the view
             totalSpending = total

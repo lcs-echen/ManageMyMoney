@@ -23,7 +23,7 @@ struct WishesView: View {
             return "$0.00"
         }
         let totalCost = cost * amount
-        return "$" + totalCost.formatted(.number.precision(.fractionLength(2)))
+        return totalCost.formatted(.number.precision(.fractionLength(2)))
     }
     var body: some View {
         HStack {
@@ -66,10 +66,10 @@ struct WishesView: View {
                     Spacer()
                     Button(action: {
                        
-                        var amount1 = String(amount.formatted(.number.precision(.fractionLength(2))))
+                        let amount1 = String(amount.formatted(.number.precision(.fractionLength(0))))
 
                         // Create the prior result, all put together into an instance of Result
-                        let priorResult = Wishes(name: wish, cost: cost, amount: amount1)
+                        let priorResult = Wishes(name: wish, totalCost: totalCost, amount: amount1)
 
                         // Save the prior result to the history
                         history.append(priorResult)
@@ -84,6 +84,7 @@ struct WishesView: View {
                     })
                     .buttonStyle(.bordered)
                     .disabled(costAsOptionalDouble == nil)
+                    .disabled(wish == "")
                     
                     Spacer()
                 }
