@@ -15,7 +15,6 @@ struct SingleWishResultView: View {
             Text(priorResult.name)
                 .font(Font.system(size: 25))
                 .fontWeight(.semibold)
-                .padding(.leading, 30)
             HStack(alignment: .center) {
                 Text("x" + priorResult.amount)
                     .font(.subheadline)
@@ -29,12 +28,13 @@ struct SingleWishResultView: View {
                     .font(Font.system(size: 30))
                     .fontWeight(.bold)
                     .padding(.trailing, 10)
+                    .foregroundColor(Color("Orange"))
                 
             
             }
-            .padding(.horizontal, 30)
-//            Divider()
+            
         }
+        .padding(.horizontal, 10)
         
     }
     

@@ -18,7 +18,14 @@ struct CartView: View {
             Text("Cart")
                 .padding(.leading, 30)
                 .font(.largeTitle)
+                .padding(.bottom, 0.1)
                 .fontWeight(.bold)
+            Text("Swipe to delete")
+                .padding(.leading, 30)
+                
+                .font(.headline)
+                .fontWeight(.light)
+
             List {
                 ForEach(history) { history in
                     SingleWishResultView(priorResult: history)
@@ -27,6 +34,7 @@ struct CartView: View {
                     history.remove(atOffsets: offsets)
                 }
             }
+            
             Spacer()
             HStack{
                 Text("Total: ")
@@ -36,10 +44,13 @@ struct CartView: View {
                 Text("$\(totalSpending.formatted(.number.precision(.fractionLength(2))))")
                     .font(.largeTitle)
                     .fontWeight(.bold)
+                    .foregroundColor(Color("Orange"))
+                    
             }
             .padding(.horizontal, 30)
             .padding(.bottom, 10)
             .padding(.top, 20)
+        
             
         }
         .onAppear {

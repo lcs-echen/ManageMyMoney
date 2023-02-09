@@ -122,7 +122,7 @@ struct SettingView: View {
 
                     Text(left)
                         .font(.title2)
-                        .frame(width: 200)
+                        .frame(width: 150)
                 }
                 
                 Spacer()
@@ -131,12 +131,13 @@ struct SettingView: View {
                         .font(.title)
                     Text("$")
                         .font(.title2)
-                    + Text("\(totalSpending)")
+                    + Text("\(totalSpending.formatted(.number.precision(.fractionLength(2))))")
                         .font(.title2)
                 }
-                .padding(.trailing, 30)
+                
                 
             }
+            .padding(.horizontal, 10)
             Spacer()
         }
         .padding()
