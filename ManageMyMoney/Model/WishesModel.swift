@@ -8,13 +8,14 @@
 import Foundation
 
 struct Wishes: Identifiable {
-    let id = UUID()
+    let id: Int
     let name: String
     let totalCost: String
     let amount: String
+    let completed: Bool
 }
-let wish1 = Wishes(name: "Hat", totalCost: "10", amount: "2")
-let wish2 = Wishes(name: "Sun Glasses", totalCost: "5", amount: "4")
+let wish1 = Wishes(id: 1, name: "Hat", totalCost: "10", amount: "2", completed: false)
+let wish2 = Wishes(id: 2, name: "Sun Glasses", totalCost: "5", amount: "4", completed: false)
 
 let wishModelForPreviews = [wish1, wish2]
     
