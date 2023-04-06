@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CA0D34F02992BFCC00C4FC04 /* SingleWishResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0D34EF2992BFCC00C4FC04 /* SingleWishResultView.swift */; };
+		CA3CCF7329DF1BD400998326 /* db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = CA3CCF7229DF1BD400998326 /* db.sqlite */; };
 		CA6CA74829907F670068A63C /* ManageMyMoneyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6CA74729907F670068A63C /* ManageMyMoneyApp.swift */; };
 		CA6CA74C29907F690068A63C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA6CA74B29907F690068A63C /* Assets.xcassets */; };
 		CA6CA74F29907F690068A63C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA6CA74E29907F690068A63C /* Preview Assets.xcassets */; };
@@ -15,10 +16,13 @@
 		CA6CA75A29907FCC0068A63C /* WishesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6CA75929907FCC0068A63C /* WishesView.swift */; };
 		CA6CA75C29907FDC0068A63C /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6CA75B29907FDC0068A63C /* CartView.swift */; };
 		CA6CA75E29907FF80068A63C /* WishesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6CA75D29907FF80068A63C /* WishesModel.swift */; };
+		CAC2A70A29DDD1A80060E02D /* Blackbird in Frameworks */ = {isa = PBXBuildFile; productRef = CAC2A70929DDD1A80060E02D /* Blackbird */; };
+		CAC2A70D29DDD1CB0060E02D /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC2A70C29DDD1CB0060E02D /* File.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CA0D34EF2992BFCC00C4FC04 /* SingleWishResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleWishResultView.swift; sourceTree = "<group>"; };
+		CA3CCF7229DF1BD400998326 /* db.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = db.sqlite; sourceTree = "<group>"; };
 		CA6CA74429907F660068A63C /* ManageMyMoney.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManageMyMoney.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA6CA74729907F670068A63C /* ManageMyMoneyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageMyMoneyApp.swift; sourceTree = "<group>"; };
 		CA6CA74B29907F690068A63C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -27,6 +31,7 @@
 		CA6CA75929907FCC0068A63C /* WishesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishesView.swift; sourceTree = "<group>"; };
 		CA6CA75B29907FDC0068A63C /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
 		CA6CA75D29907FF80068A63C /* WishesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishesModel.swift; sourceTree = "<group>"; };
+		CAC2A70C29DDD1CB0060E02D /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAC2A70A29DDD1A80060E02D /* Blackbird in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +68,7 @@
 				CA6CA74729907F670068A63C /* ManageMyMoneyApp.swift */,
 				CA6CA75629907F8B0068A63C /* Views */,
 				CA6CA75529907F820068A63C /* Model */,
+				CAC2A70B29DDD1B60060E02D /* Helper */,
 				CA6CA74B29907F690068A63C /* Assets.xcassets */,
 				CA6CA74D29907F690068A63C /* Preview Content */,
 			);
@@ -79,6 +86,7 @@
 		CA6CA75529907F820068A63C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CA3CCF7229DF1BD400998326 /* db.sqlite */,
 				CA6CA75D29907FF80068A63C /* WishesModel.swift */,
 			);
 			path = Model;
@@ -93,6 +101,14 @@
 				CA0D34EF2992BFCC00C4FC04 /* SingleWishResultView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		CAC2A70B29DDD1B60060E02D /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				CAC2A70C29DDD1CB0060E02D /* File.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -111,6 +127,9 @@
 			dependencies = (
 			);
 			name = ManageMyMoney;
+			packageProductDependencies = (
+				CAC2A70929DDD1A80060E02D /* Blackbird */,
+			);
 			productName = ManageMyMoney;
 			productReference = CA6CA74429907F660068A63C /* ManageMyMoney.app */;
 			productType = "com.apple.product-type.application";
@@ -139,6 +158,9 @@
 				Base,
 			);
 			mainGroup = CA6CA73B29907F660068A63C;
+			packageReferences = (
+				CAC2A70829DDD1A80060E02D /* XCRemoteSwiftPackageReference "Blackbird" */,
+			);
 			productRefGroup = CA6CA74529907F660068A63C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -154,6 +176,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA6CA74F29907F690068A63C /* Preview Assets.xcassets in Resources */,
+				CA3CCF7329DF1BD400998326 /* db.sqlite in Resources */,
 				CA6CA74C29907F690068A63C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -167,6 +190,7 @@
 			files = (
 				CA0D34F02992BFCC00C4FC04 /* SingleWishResultView.swift in Sources */,
 				CA6CA75A29907FCC0068A63C /* WishesView.swift in Sources */,
+				CAC2A70D29DDD1CB0060E02D /* File.swift in Sources */,
 				CA6CA74829907F670068A63C /* ManageMyMoneyApp.swift in Sources */,
 				CA6CA75E29907FF80068A63C /* WishesModel.swift in Sources */,
 				CA6CA75C29907FDC0068A63C /* CartView.swift in Sources */,
@@ -371,6 +395,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CAC2A70829DDD1A80060E02D /* XCRemoteSwiftPackageReference "Blackbird" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marcoarment/Blackbird";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CAC2A70929DDD1A80060E02D /* Blackbird */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CAC2A70829DDD1A80060E02D /* XCRemoteSwiftPackageReference "Blackbird" */;
+			productName = Blackbird;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CA6CA73C29907F660068A63C /* Project object */;
 }
