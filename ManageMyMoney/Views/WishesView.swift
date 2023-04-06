@@ -81,9 +81,11 @@ struct WishesView: View {
 //                        history.append(newWishItem)
 //
 
-                        Task { try await db!.transaction {
-                            core in try core.query("INSERT INTO WishCart (name) VALUES (?)", wish); try core.query("INSERT INTO WishCart (cost) VALUES (?)", cost); try core.query("INSERT INTO WishCart (amount) VALUES (?)", amount)
-                        }
+                        Task {
+                            try await db!.transaction {
+                                core in try core.query("INSERT INTO WishCart (name, totalCost, amount) VALUES (?,?,?)", wish, totalCost, amount)
+                            }
+                            
                             wish = ""
                             cost = ""
                             amount = 1
