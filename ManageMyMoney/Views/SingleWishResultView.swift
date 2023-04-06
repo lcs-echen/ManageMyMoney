@@ -4,12 +4,11 @@
 //
 //  Created by Evelyn Chen on 2023-02-07.
 //
-
+import Blackbird
 import SwiftUI
 
 struct SingleWishResultView: View {
-    let priorResult: Wishes
-    
+    var priorResult: Wishes
     var body: some View {
         VStack (alignment: .leading, spacing: 9.0){
             Text(priorResult.name)
@@ -44,8 +43,4 @@ struct SingleWishResultView: View {
     
 }
 
-struct SingleWishResultView_Previews: PreviewProvider {
-    static var previews: some View {
-        SingleWishResultView(priorResult: wish1)
-    }
-}
+

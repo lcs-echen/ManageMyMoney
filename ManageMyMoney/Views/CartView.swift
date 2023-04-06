@@ -4,15 +4,15 @@
 //
 //  Created by Evelyn Chen on 2023-02-05.
 //
-
+import Blackbird
 import SwiftUI
 
 
 struct CartView: View {
-    
+    @Environment(\.blackbirdDatabase) var db: Blackbird.Database?
     @Binding var totalSpending: Double
-    @Binding var history: [Wishes]
-    
+
+    @BlackbirdLiveModels({ db in try await Wishes.read(from: db)}) var history
     
     var body: some View {
         VStack (alignment: .leading){
@@ -28,11 +28,8 @@ struct CartView: View {
                 .fontWeight(.light)
             
             List {
-                ForEach(history) { history in
+                ForEach(history.results) { history in
                     SingleWishResultView(priorResult: history)
-                }
-                .onDelete { offsets in
-                    history.remove(atOffsets: offsets)
                 }
             }
             
@@ -63,7 +60,7 @@ struct CartView: View {
             // Create a running total that is zero
             var total = 0.0
             // Iterate over each item and add to the running total
-            for item in history {
+            for item in history.results {
                 total += Double(item.totalCost) ?? 0
             }
             // Update the view
@@ -75,6 +72,6 @@ struct CartView: View {
 
 struct CartView_Previews: PreviewProvider {
     static var previews: some View {
-        CartView(totalSpending: Binding.constant(325.00), history: Binding.constant(wishModelForPreviews))
+        CartView(totalSpending: Binding.constant(325.00))
     }
 }

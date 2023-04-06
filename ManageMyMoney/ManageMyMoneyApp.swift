@@ -6,10 +6,10 @@
 //
 
 import SwiftUI
-
+import Blackbird
 @main
 struct ManageMyMoneyApp: App {
-    @State var history: [Wishes] = []
+
     @State var totalSpending: Double = 0
     var body: some Scene {
         WindowGroup {
@@ -18,15 +18,17 @@ struct ManageMyMoneyApp: App {
                     .tabItem {
                         Image(systemName: "gear")
                         Text("Setting")}
-                WishesView(history: $history)
+                WishesView()
                     .tabItem {
                         Image(systemName: "sparkles")
                         Text("Wish")}
-                CartView(totalSpending: $totalSpending, history: $history)
+                CartView(totalSpending: $totalSpending)
                     .tabItem {
                         Image(systemName: "cart")
                         Text("Cart") }
+                    
             }
+            .environment(\.blackbirdDatabase, AppDatabase.instance)
             .accentColor(Color("Orange"))
         }
     }

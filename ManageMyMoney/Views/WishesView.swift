@@ -4,14 +4,15 @@
 //
 //  Created by Evelyn Chen on 2023-02-05.
 //
-
+import Blackbird
 import SwiftUI
 
 struct WishesView: View {
+    @Environment(\.blackbirdDatabase) var db: Blackbird.Database?
     @State var wish: String = ""
     @State var cost: String = ""
     @State var amount: Double = 1
-    @Binding var history: [Wishes] 
+    @BlackbirdLiveModels({ db in try await Wishes.read(from: db)}) var history
     var costAsOptionalDouble: Double? {
         guard let cost = Double(cost) else {
             return nil
@@ -69,20 +70,24 @@ struct WishesView: View {
                 HStack {
                     Spacer()
                     Button(action: {
-                        let lastId = history.last!.id
-                        let newId = lastId + 1
-                        let amount1 = String(amount.formatted(.number.precision(.fractionLength(0))))
+//                        let lastId = history.last!.id
+//                        let newId = lastId + 1
+//                        let amount1 = String(amount.formatted(.number.precision(.fractionLength(0))))
+//
+//                        // Create the prior result, all put together into an instance of Result
+//                        let newWishItem = Wishes(id: newId, name: wish, totalCost: totalCost, amount: amount1, completed: false)
+//
+//                        // Save the prior result to the history
+//                        history.append(newWishItem)
+//
 
-                        // Create the prior result, all put together into an instance of Result
-                        let newWishItem = Wishes(id: newId, name: wish, totalCost: totalCost, amount: amount1, completed: false)
-
-                        // Save the prior result to the history
-                        history.append(newWishItem)
-                        
-                        wish = ""
-                        cost = ""
-                        amount = 1
-                        
+                        Task { try await db!.transaction {
+                            core in try core.query("INSERT INTO WishCart (name) VALUES (?)", wish); try core.query("INSERT INTO WishCart (cost) VALUES (?)", cost); try core.query("INSERT INTO WishCart (amount) VALUES (?)", amount)
+                        }
+                            wish = ""
+                            cost = ""
+                            amount = 1
+                        }
                     }, label: {
                         Text("Add to Cart")
                             .font(.headline.smallCaps())
@@ -106,7 +111,7 @@ struct WishesView: View {
 struct WishesView_Previews: PreviewProvider {
     static var previews: some View {
  
-        WishesView(history: Binding.constant(wishModelForPreviews))
+        WishesView()
 
     }
 }
