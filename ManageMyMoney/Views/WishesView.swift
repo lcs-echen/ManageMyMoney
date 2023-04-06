@@ -12,7 +12,7 @@ struct WishesView: View {
     @State var wish: String = ""
     @State var cost: String = ""
     @State var amount: Double = 1
-    @BlackbirdLiveModels({ db in try await Wishes.read(from: db)}) var history
+    @BlackbirdLiveModels({ db in try await WishCart.read(from: db)}) var history
     var costAsOptionalDouble: Double? {
         guard let cost = Double(cost) else {
             return nil

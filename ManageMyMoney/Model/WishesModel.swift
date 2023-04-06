@@ -7,7 +7,7 @@
 import Blackbird
 import Foundation
 
-struct Wishes: BlackbirdModel {
+struct WishCart: BlackbirdModel {
     @BlackbirdColumn var id: Int
     @BlackbirdColumn var name: String
     @BlackbirdColumn var totalCost: String

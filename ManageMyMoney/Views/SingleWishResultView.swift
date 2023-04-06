@@ -8,20 +8,29 @@ import Blackbird
 import SwiftUI
 
 struct SingleWishResultView: View {
-    var priorResult: Wishes
+    var priorResult: WishCart
+    
+    var formattedAmount: String {
+        return Double(priorResult.amount)!.formatted(.number.precision(.fractionLength(0)))
+    }
+    
     var body: some View {
         VStack (alignment: .leading, spacing: 9.0){
             Text(priorResult.name)
                 .font(Font.system(size: 25))
                 .fontWeight(.semibold)
             HStack(alignment: .center) {
-                Text("x" + priorResult.amount)
+                Group {
+                    Text("x")
+                    + Text(formattedAmount)
+                }
                     .font(.subheadline)
                     .frame(width: 30, height: 30)
                     .overlay(RoundedRectangle(cornerRadius: 10)
                         .stroke(Color.gray, lineWidth: 3))
                     .foregroundColor(.gray)
                     .fontWeight(.bold)
+                
                 Spacer()
                 Text("$")
                     .foregroundColor(Color("Orange"))

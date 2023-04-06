@@ -12,7 +12,7 @@ struct CartView: View {
     @Environment(\.blackbirdDatabase) var db: Blackbird.Database?
     @Binding var totalSpending: Double
 
-    @BlackbirdLiveModels({ db in try await Wishes.read(from: db)}) var history
+    @BlackbirdLiveModels({ db in try await WishCart.read(from: db)}) var history
     
     var body: some View {
         VStack (alignment: .leading){
