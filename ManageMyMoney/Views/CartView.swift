@@ -29,7 +29,21 @@ struct CartView: View {
             
             List {
                 ForEach(history.results) { history in
-                    SingleWishResultView(priorResult: history)
+                    Label(title: {
+                        SingleWishResultView(priorResult: history)
+                    }, icon: {
+                        if history.completed == true {
+                            Image(systemName: "checkmark.circle")
+                        } else {
+                            Image(systemName: "circle")
+                        }
+                    })
+                .onTapGesture {
+                    Task {
+                        try await db!.transaction {
+                            core in try core.query("UPDATE TodoItem SET completed = (?) WHERE id = (?)", !history.completed, history.id)
+                        }
+                    }
                 }
             }
             
