@@ -16,18 +16,7 @@ struct CartView: View {
     var body: some View {
         NavigationView {
             VStack (alignment: .leading){
-                Text("Cart")
-                    .padding(.top, 20)
-                    .padding(.leading, 30)
-                    .font(.largeTitle)
-                    .padding(.bottom, 0.1)
-                    .fontWeight(.bold)
-                
-                Text("Swipe to delete")
-                    .padding(.leading, 30)
-                    .font(.headline)
-                    .fontWeight(.light)
-                
+
                 CartItemsView(filteredOn: searchText)
                     .searchable(text: $searchText)
                 
@@ -56,13 +45,16 @@ struct CartView: View {
                     var total = 0.0
                     // Iterate over each item and add to the running total
                     for item in history.results {
-                        total += Double(item.totalCost) ?? 0
+                        if let nextValue = try? Double(item.totalCost, format: .currency(code: "CAD")) {
+                            total += nextValue
+                        }
                     }
                     // Update the view
                     totalSpending = total
                 }
                 
             }
+            .navigationTitle("Cart")
             
         }
         
