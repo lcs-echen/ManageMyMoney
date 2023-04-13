@@ -11,42 +11,26 @@ import SwiftUI
 struct CartView: View {
     @Environment(\.blackbirdDatabase) var db: Blackbird.Database?
     @Binding var totalSpending: Double
-    
+    @State var searchText = ""
     @BlackbirdLiveModels({ db in try await WishCart.read(from: db)}) var history
-    
     var body: some View {
-        VStack (alignment: .leading){
-            Text("Cart")
-                .padding(.top, 20)
-                .padding(.leading, 30)
-                .font(.largeTitle)
-                .padding(.bottom, 0.1)
-                .fontWeight(.bold)
-            Text("Swipe to delete")
-                .padding(.leading, 30)
-                .font(.headline)
-                .fontWeight(.light)
-            
-            List {
-                ForEach(history.results) { history in
-                    Label(title: {
-                        SingleWishResultView(priorResult: history)
-                    }, icon: {
-                        if history.completed == true {
-                            Image(systemName: "checkmark.circle")
-                        } else {
-                            Image(systemName: "circle")
-                        }
-                    })
-                    .onTapGesture {
-                        Task {
-                            try await db!.transaction {
-                                core in try core.query("UPDATE TodoItem SET completed = (?) WHERE id = (?)", !history.completed, history.id)
-                            }
-                        }
-                    }
-                }
-                .onDelete(perform: removeRows)
+        NavigationView {
+            VStack (alignment: .leading){
+                Text("Cart")
+                    .padding(.top, 20)
+                    .padding(.leading, 30)
+                    .font(.largeTitle)
+                    .padding(.bottom, 0.1)
+                    .fontWeight(.bold)
+                
+                Text("Swipe to delete")
+                    .padding(.leading, 30)
+                    .font(.headline)
+                    .fontWeight(.light)
+                
+                CartItemsView(filteredOn: searchText)
+                    .searchable(text: $searchText)
+                
                 
                 Spacer()
                 HStack {
@@ -67,38 +51,21 @@ struct CartView: View {
                 .padding(.horizontal, 30)
                 .padding(.top, 8)
                 .padding(.bottom, 25)
-                
-                
-                
-            }
-            .onAppear {
-                // Create a running total that is zero
-                var total = 0.0
-                // Iterate over each item and add to the running total
-                for item in history.results {
-                    total += Double(item.totalCost) ?? 0
+                .onAppear {
+                    // Create a running total that is zero
+                    var total = 0.0
+                    // Iterate over each item and add to the running total
+                    for item in history.results {
+                        total += Double(item.totalCost) ?? 0
+                    }
+                    // Update the view
+                    totalSpending = total
                 }
-                // Update the view
-                totalSpending = total
+                
             }
+            
         }
         
-    }
-    
-    func removeRows(at offsets: IndexSet) {
-        Task {
-            try await db!.transaction{ core in
-                var idList = ""
-                for offset in offsets {
-                    idList += "\(history.results[offset].id),"
-                }
-                print(idList)
-                idList.removeLast()
-                print(idList)
-                
-                try core.query("DELETE FROM TodoItem WHERE id IN (?)", idList)
-            }
-        }
     }
 }
     
