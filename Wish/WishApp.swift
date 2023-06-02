@@ -1,6 +1,6 @@
 //
-//  ManageMyMoneyApp.swift
-//  ManageMyMoney
+//  WishApp.swift
+//  Wish
 //
 //  Created by Evelyn Chen on 2023-02-05.
 //
@@ -8,7 +8,7 @@
 import SwiftUI
 import Blackbird
 @main
-struct ManageMyMoneyApp: App {
+struct WishApp: App {
 
     @State var totalSpending: Double = 0
     var body: some Scene {

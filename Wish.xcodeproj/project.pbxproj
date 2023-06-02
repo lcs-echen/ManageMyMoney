@@ -10,7 +10,7 @@
 		CA0D34F02992BFCC00C4FC04 /* SingleWishResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0D34EF2992BFCC00C4FC04 /* SingleWishResultView.swift */; };
 		CA1DBE9D29E59BE80008334C /* CartItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1DBE9C29E59BE80008334C /* CartItemsView.swift */; };
 		CA3CCF7329DF1BD400998326 /* db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = CA3CCF7229DF1BD400998326 /* db.sqlite */; };
-		CA6CA74829907F670068A63C /* ManageMyMoneyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6CA74729907F670068A63C /* ManageMyMoneyApp.swift */; };
+		CA6CA74829907F670068A63C /* WishApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6CA74729907F670068A63C /* WishApp.swift */; };
 		CA6CA74C29907F690068A63C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA6CA74B29907F690068A63C /* Assets.xcassets */; };
 		CA6CA74F29907F690068A63C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA6CA74E29907F690068A63C /* Preview Assets.xcassets */; };
 		CA6CA75829907FA70068A63C /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6CA75729907FA70068A63C /* SettingView.swift */; };
@@ -25,8 +25,8 @@
 		CA0D34EF2992BFCC00C4FC04 /* SingleWishResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleWishResultView.swift; sourceTree = "<group>"; };
 		CA1DBE9C29E59BE80008334C /* CartItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemsView.swift; sourceTree = "<group>"; };
 		CA3CCF7229DF1BD400998326 /* db.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = db.sqlite; sourceTree = "<group>"; };
-		CA6CA74429907F660068A63C /* ManageMyMoney.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManageMyMoney.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CA6CA74729907F670068A63C /* ManageMyMoneyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageMyMoneyApp.swift; sourceTree = "<group>"; };
+		CA6CA74429907F660068A63C /* Wish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wish.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA6CA74729907F670068A63C /* WishApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishApp.swift; sourceTree = "<group>"; };
 		CA6CA74B29907F690068A63C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA6CA74E29907F690068A63C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CA6CA75729907FA70068A63C /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
@@ -58,7 +58,7 @@
 		CA6CA73B29907F660068A63C = {
 			isa = PBXGroup;
 			children = (
-				CA6CA74629907F660068A63C /* ManageMyMoney */,
+				CA6CA74629907F660068A63C /* Wish */,
 				CA6CA74529907F660068A63C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -66,15 +66,15 @@
 		CA6CA74529907F660068A63C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CA6CA74429907F660068A63C /* ManageMyMoney.app */,
+				CA6CA74429907F660068A63C /* Wish.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CA6CA74629907F660068A63C /* ManageMyMoney */ = {
+		CA6CA74629907F660068A63C /* Wish */ = {
 			isa = PBXGroup;
 			children = (
-				CA6CA74729907F670068A63C /* ManageMyMoneyApp.swift */,
+				CA6CA74729907F670068A63C /* WishApp.swift */,
 				CA1DBE9B29E59BC90008334C /* New Group */,
 				CA6CA75629907F8B0068A63C /* Views */,
 				CA6CA75529907F820068A63C /* Model */,
@@ -82,7 +82,7 @@
 				CA6CA74B29907F690068A63C /* Assets.xcassets */,
 				CA6CA74D29907F690068A63C /* Preview Content */,
 			);
-			path = ManageMyMoney;
+			path = Wish;
 			sourceTree = "<group>";
 		};
 		CA6CA74D29907F690068A63C /* Preview Content */ = {
@@ -125,9 +125,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CA6CA74329907F660068A63C /* ManageMyMoney */ = {
+		CA6CA74329907F660068A63C /* Wish */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CA6CA75229907F690068A63C /* Build configuration list for PBXNativeTarget "ManageMyMoney" */;
+			buildConfigurationList = CA6CA75229907F690068A63C /* Build configuration list for PBXNativeTarget "Wish" */;
 			buildPhases = (
 				CA6CA74029907F660068A63C /* Sources */,
 				CA6CA74129907F660068A63C /* Frameworks */,
@@ -137,12 +137,12 @@
 			);
 			dependencies = (
 			);
-			name = ManageMyMoney;
+			name = Wish;
 			packageProductDependencies = (
 				CAC2A70929DDD1A80060E02D /* Blackbird */,
 			);
 			productName = ManageMyMoney;
-			productReference = CA6CA74429907F660068A63C /* ManageMyMoney.app */;
+			productReference = CA6CA74429907F660068A63C /* Wish.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -160,7 +160,7 @@
 					};
 				};
 			};
-			buildConfigurationList = CA6CA73F29907F660068A63C /* Build configuration list for PBXProject "ManageMyMoney" */;
+			buildConfigurationList = CA6CA73F29907F660068A63C /* Build configuration list for PBXProject "Wish" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -176,7 +176,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CA6CA74329907F660068A63C /* ManageMyMoney */,
+				CA6CA74329907F660068A63C /* Wish */,
 			);
 		};
 /* End PBXProject section */
@@ -202,7 +202,7 @@
 				CA0D34F02992BFCC00C4FC04 /* SingleWishResultView.swift in Sources */,
 				CA6CA75A29907FCC0068A63C /* WishesView.swift in Sources */,
 				CAC2A70D29DDD1CB0060E02D /* File.swift in Sources */,
-				CA6CA74829907F670068A63C /* ManageMyMoneyApp.swift in Sources */,
+				CA6CA74829907F670068A63C /* WishApp.swift in Sources */,
 				CA6CA75E29907FF80068A63C /* WishesModel.swift in Sources */,
 				CA1DBE9D29E59BE80008334C /* CartItemsView.swift in Sources */,
 				CA6CA75C29907FDC0068A63C /* CartView.swift in Sources */,
@@ -334,7 +334,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ManageMyMoney/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Wish/Preview Content\"";
 				DEVELOPMENT_TEAM = 282SC32QQC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -363,7 +363,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ManageMyMoney/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Wish/Preview Content\"";
 				DEVELOPMENT_TEAM = 282SC32QQC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -388,7 +388,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CA6CA73F29907F660068A63C /* Build configuration list for PBXProject "ManageMyMoney" */ = {
+		CA6CA73F29907F660068A63C /* Build configuration list for PBXProject "Wish" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CA6CA75029907F690068A63C /* Debug */,
@@ -397,7 +397,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CA6CA75229907F690068A63C /* Build configuration list for PBXNativeTarget "ManageMyMoney" */ = {
+		CA6CA75229907F690068A63C /* Build configuration list for PBXNativeTarget "Wish" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CA6CA75329907F690068A63C /* Debug */,
