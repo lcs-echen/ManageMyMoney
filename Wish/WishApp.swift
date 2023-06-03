@@ -14,7 +14,7 @@ struct WishApp: App {
     var body: some Scene {
         WindowGroup {
             TabView {
-                WishesView()
+                HomeView()
                     .tabItem {
                         Image(systemName: "sparkles")
                         Text("Wish")}
