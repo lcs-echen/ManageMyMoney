@@ -92,36 +92,8 @@ struct WishesView: View {
             .toolbar {
                             ToolbarItem(placement: .primaryAction) {
                                 Button(action: {
-                                    // Write to database
-                                    Task {
-                                        try await db!.transaction { core in
-                                            try core.query("""
-                                                        INSERT INTO WishCart (
-                                                            name,
-                                                        totalCost,
-                                                            amount,
-                                                        type,
-                                                            rating
-                                                        )
-                                                        VALUES (
-                                                            (?),
-                                                            (?),
-                                                            (?)
-                                                        )
-                                                        """,
-                                                        name,
-                                                        totalCost,
-                                                           amount,
-                                                           type,
-                                                        rating)
-                                        }
-                                        // Reset input fields after writing to database
-                                        name = ""
-                                        cost = ""
-                                        type = ""
-                                        rating = 3
-                                        amount = 1
-                                    }
+                                    addWish()
+                                    
                                 }, label: {
                                     Text("Add")
                                 })
@@ -133,6 +105,42 @@ struct WishesView: View {
         }
         
         
+    }
+    
+    //MARK: Function
+    
+    func addWish() {
+        Task {
+            try await db!.transaction { core in
+                try core.query("""
+                            INSERT INTO WishCart (
+                                name,
+                            totalCost,
+                                amount,
+                            type,
+                                rating
+                            )
+                            VALUES (
+                                (?),
+                                (?),
+                                (?),
+                                (?),
+                                (?)
+                            )
+                            """,
+                            name,
+                            totalCost,
+                               amount,
+                               type,
+                            rating)
+            }
+            // Reset input fields after writing to database
+            name = ""
+            cost = ""
+            type = ""
+            rating = 3
+            amount = 1
+        }
     }
 }
 
