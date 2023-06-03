@@ -12,6 +12,8 @@ struct WishCart: BlackbirdModel {
     @BlackbirdColumn var name: String
     @BlackbirdColumn var totalCost: String
     @BlackbirdColumn var amount: String
+    @BlackbirdColumn var type: String
+    @BlackbirdColumn var rating: Int
     @BlackbirdColumn var completed: Bool
 }
 
