@@ -33,12 +33,9 @@ struct WishesView: View {
         return totalCost.formatted(.number.precision(.fractionLength(2)))
     }
     var body: some View {
-        HStack {
+        
+        NavigationView {
             VStack (alignment: .leading){
-                Text("Wishes")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding(.bottom, 15)
                 Group{
                     Text("Your Wish: ")
                         .font(.title2)
@@ -89,30 +86,6 @@ struct WishesView: View {
                         .multilineTextAlignment(.trailing)
                 }
                 .padding(.top, 5)
-                HStack {
-                    Spacer()
-//                    Button(action: {
-//
-//                        Task {
-//                            try await db!.transaction {
-//                                core in try core.query("INSERT INTO WishCart (name, totalCost, amount) VALUES (?,?,?)", wish, totalCost, amount)
-//                            }
-//
-//                            wish = ""
-//                            cost = ""
-//                            amount = 1
-//                        }
-//                    }, label: {
-//                        Text("Add to Cart")
-//                            .font(.headline.smallCaps())
-//                    })
-//                    .buttonStyle(.bordered)
-//                    .disabled(costAsOptionalDouble == nil)
-//                    .disabled(wish == "")
-                    
-                    Spacer()
-                }
-                .padding(.top, 30)
                 Spacer()
             }
             .padding()
@@ -156,8 +129,9 @@ struct WishesView: View {
                                 .disabled(name == "")
                             }
                         }
-            Spacer()
+
         }
+        
         
     }
 }
