@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WishesView: View {
     @Environment(\.blackbirdDatabase) var db: Blackbird.Database?
-    @State var wish: String = ""
+    @State var name: String = ""
     @State var cost: String = ""
     @State var amount: Double = 1
     @State var type: String = ""
@@ -42,7 +42,7 @@ struct WishesView: View {
                 Group{
                     Text("Your Wish: ")
                         .font(.title2)
-                    TextField("Please enter your wish", text: $wish)
+                    TextField("Please enter your wish", text: $name)
                         .padding(.bottom, 10)
                 }
                 Group {
@@ -91,34 +91,24 @@ struct WishesView: View {
                 .padding(.top, 5)
                 HStack {
                     Spacer()
-                    Button(action: {
-//                        let lastId = history.last!.id
-//                        let newId = lastId + 1
-//                        let amount1 = String(amount.formatted(.number.precision(.fractionLength(0))))
+//                    Button(action: {
 //
-//                        // Create the prior result, all put together into an instance of Result
-//                        let newWishItem = Wishes(id: newId, name: wish, totalCost: totalCost, amount: amount1, completed: false)
+//                        Task {
+//                            try await db!.transaction {
+//                                core in try core.query("INSERT INTO WishCart (name, totalCost, amount) VALUES (?,?,?)", wish, totalCost, amount)
+//                            }
 //
-//                        // Save the prior result to the history
-//                        history.append(newWishItem)
-//
-
-                        Task {
-                            try await db!.transaction {
-                                core in try core.query("INSERT INTO WishCart (name, totalCost, amount) VALUES (?,?,?)", wish, totalCost, amount)
-                            }
-                            
-                            wish = ""
-                            cost = ""
-                            amount = 1
-                        }
-                    }, label: {
-                        Text("Add to Cart")
-                            .font(.headline.smallCaps())
-                    })
-                    .buttonStyle(.bordered)
-                    .disabled(costAsOptionalDouble == nil)
-                    .disabled(wish == "")
+//                            wish = ""
+//                            cost = ""
+//                            amount = 1
+//                        }
+//                    }, label: {
+//                        Text("Add to Cart")
+//                            .font(.headline.smallCaps())
+//                    })
+//                    .buttonStyle(.bordered)
+//                    .disabled(costAsOptionalDouble == nil)
+//                    .disabled(wish == "")
                     
                     Spacer()
                 }
@@ -126,6 +116,46 @@ struct WishesView: View {
                 Spacer()
             }
             .padding()
+            .toolbar {
+                            ToolbarItem(placement: .primaryAction) {
+                                Button(action: {
+                                    // Write to database
+                                    Task {
+                                        try await db!.transaction { core in
+                                            try core.query("""
+                                                        INSERT INTO WishCart (
+                                                            name,
+                                                        totalCost,
+                                                            amount,
+                                                        type,
+                                                            rating
+                                                        )
+                                                        VALUES (
+                                                            (?),
+                                                            (?),
+                                                            (?)
+                                                        )
+                                                        """,
+                                                        name,
+                                                        totalCost,
+                                                           amount,
+                                                           type,
+                                                        rating)
+                                        }
+                                        // Reset input fields after writing to database
+                                        name = ""
+                                        cost = ""
+                                        type = ""
+                                        rating = 3
+                                        amount = 1
+                                    }
+                                }, label: {
+                                    Text("Add")
+                                })
+                                .disabled(costAsOptionalDouble == nil)
+                                .disabled(name == "")
+                            }
+                        }
             Spacer()
         }
         
@@ -136,6 +166,7 @@ struct WishesView_Previews: PreviewProvider {
     static var previews: some View {
  
         WishesView()
+            .environment(\.blackbirdDatabase, AppDatabase.instance)
 
     }
 }
