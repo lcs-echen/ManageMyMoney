@@ -73,7 +73,6 @@ struct WishesView: View {
                         Text("❤️❤️").tag(2)
                         Text("❤️❤️❤️").tag(3)
                         Text("❤️❤️❤️❤️").tag(4)
-                        Text("❤️❤️❤️❤️❤️").tag(5)
                     })
                     .pickerStyle(.segmented)
                 }
@@ -93,7 +92,6 @@ struct WishesView: View {
                             ToolbarItem(placement: .primaryAction) {
                                 Button(action: {
                                     addWish()
-                                    
                                 }, label: {
                                     Text("Add")
                                 })
@@ -101,9 +99,7 @@ struct WishesView: View {
                                 .disabled(name == "")
                             }
                         }
-
         }
-        
         
     }
     

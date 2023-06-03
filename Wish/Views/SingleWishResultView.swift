@@ -31,6 +31,8 @@ struct SingleWishResultView: View {
                     .foregroundColor(.gray)
                     .fontWeight(.bold)
                 
+                Text("\(priorResult.rating)/4❤️")
+                
                 Spacer()
                 Text("$")
                     .foregroundColor(Color("Orange"))
@@ -53,3 +55,9 @@ struct SingleWishResultView: View {
 }
 
 
+struct SingleWishResultView_Previews: PreviewProvider {
+    static var previews: some View {
+        SingleWishResultView(priorResult: wish1)
+            .environment(\.blackbirdDatabase, AppDatabase.instance)
+    }
+}

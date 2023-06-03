@@ -17,4 +17,4 @@ struct WishCart: BlackbirdModel {
     @BlackbirdColumn var completed: Bool
 }
 
-
+let wish1 = WishCart(id: 2, name: "Apple", totalCost: "100.00", amount: "20", type: "Fruit", rating: 4, completed: false)
