@@ -108,17 +108,16 @@ struct WishesView: View {
     }
     
     //MARK: Function
-    
     func addWish() {
         Task {
             try await db!.transaction { core in
                 try core.query("""
                             INSERT INTO WishCart (
-                                name,
+                            name,
                             totalCost,
-                                amount,
+                            amount,
                             type,
-                                rating
+                            rating
                             )
                             VALUES (
                                 (?),
@@ -130,8 +129,8 @@ struct WishesView: View {
                             """,
                             name,
                             totalCost,
-                               amount,
-                               type,
+                            amount,
+                            type,
                             rating)
             }
             // Reset input fields after writing to database
