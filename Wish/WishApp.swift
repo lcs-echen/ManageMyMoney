@@ -14,10 +14,6 @@ struct WishApp: App {
     var body: some Scene {
         WindowGroup {
             TabView {
-                SettingView(totalSpending: $totalSpending)
-                    .tabItem {
-                        Image(systemName: "gear")
-                        Text("Setting")}
                 WishesView()
                     .tabItem {
                         Image(systemName: "sparkles")
