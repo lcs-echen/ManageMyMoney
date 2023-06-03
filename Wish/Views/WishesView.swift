@@ -12,6 +12,8 @@ struct WishesView: View {
     @State var wish: String = ""
     @State var cost: String = ""
     @State var amount: Double = 1
+    @State var type: String = ""
+    @State var rating: Int = 3
     @BlackbirdLiveModels({ db in try await WishCart.read(from: db)}) var history
     var costAsOptionalDouble: Double? {
         guard let cost = Double(cost) else {
@@ -57,6 +59,26 @@ struct WishesView: View {
                         .font(.title2)
                     Stepper("\(amount.formatted(.number.precision(.fractionLength(0))))", value: $amount, in: 1...100)
                         .padding(.bottom, 15)
+                }
+                Group{
+                    Text("Type: ")
+                        .font(.title2)
+                    TextField("Please enter the type of your wish", text: $type)
+                        .padding(.bottom, 10)
+                }
+                Group{
+                    Text("Eagerness: ")
+                        .font(.title2)
+                    Picker(selection: $rating,
+                           label: Text("Picker Name"),
+                           content: {
+                        Text("❤️").tag(1)
+                        Text("❤️❤️").tag(2)
+                        Text("❤️❤️❤️").tag(3)
+                        Text("❤️❤️❤️❤️").tag(4)
+                        Text("❤️❤️❤️❤️❤️").tag(5)
+                    })
+                    .pickerStyle(.segmented)
                 }
                 HStack {
                     Text("Total Cost: ")
