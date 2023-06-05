@@ -27,7 +27,7 @@ struct HomeView: View {
                     })
                     .sheet(isPresented: $showingAddWishView) {
                         WishesView()
-                            .presentationDetents([.fraction(0.6)])
+                            .presentationDetents([.fraction(0.65)])
                     }
 
                 }
