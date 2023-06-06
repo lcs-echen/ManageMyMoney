@@ -12,7 +12,7 @@ struct WishesView: View {
     @State var name: String = ""
     @State var cost: String = ""
     @State var amount: Double = 1
-    @State var type: String = ""
+    @State var type = 1
     @State var rating: Int = 3
     @BlackbirdLiveQuery(tableName: "WishCart", { db in try await db.query("SELECT * FROM WishesWithTypeName")}) var history
     var costAsOptionalDouble: Double? {
@@ -60,8 +60,13 @@ struct WishesView: View {
                 Group{
                     Text("Type: ")
                         .font(.title2)
-                    TextField("Please enter the type of your wish", text: $type)
-                        .padding(.bottom, 10)
+                    Picker(selection: $type,
+                           label:Text("Select a type"),
+                           content: {
+                        Text("Car").tag(1)
+                        Text("Technology").tag(2)
+                        Text("Food").tag(3)
+                    })
                 }
                 
                 Picker(selection: $rating,
@@ -110,7 +115,7 @@ struct WishesView: View {
                             name,
                             totalCost,
                             amount,
-                            type,
+                            type_id,
                             rating
                             )
                             VALUES (
@@ -130,7 +135,7 @@ struct WishesView: View {
             // Reset input fields after writing to database
             name = ""
             cost = ""
-            type = ""
+            type = 1
             rating = 3
             amount = 1
         }
