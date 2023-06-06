@@ -15,6 +15,10 @@ struct WishesView: View {
     @State var type = 1
     @State var rating: Int = 3
     @BlackbirdLiveQuery(tableName: "WishCart", { db in try await db.query("SELECT * FROM WishesWithTypeName")}) var history
+    @BlackbirdLiveModels({db in
+        try await Type.read(from: db)
+    }) var types
+    
     var costAsOptionalDouble: Double? {
         guard let cost = Double(cost) else {
             return nil
@@ -60,13 +64,16 @@ struct WishesView: View {
                 Group{
                     Text("Type: ")
                         .font(.title2)
-                    Picker(selection: $type,
-                           label:Text("Select a type"),
-                           content: {
-                        Text("Car").tag(1)
-                        Text("Technology").tag(2)
-                        Text("Food").tag(3)
-                    })
+//                    Picker(selection: $type,
+//                           label:Text("Select a type"),
+//                           content: {
+//                        Text("Car").tag(1)
+//                        Text("Technology").tag(2)
+//                        Text("Food").tag(3)
+//                    })
+                    ForEach(types.results) { currentType in
+                        Text(currentType.type).tag(currentType.id)
+                    }
                 }
                 
                 Picker(selection: $rating,
