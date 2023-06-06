@@ -58,5 +58,7 @@ struct AddTypeView: View {
 struct AddTypeView_Previews: PreviewProvider {
     static var previews: some View {
         AddTypeView()
+            .environment(\.blackbirdDatabase, AppDatabase.instance)
+
     }
 }
