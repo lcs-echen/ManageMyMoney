@@ -16,8 +16,8 @@ struct WishesView: View {
     @State var rating: Int = 3
     @BlackbirdLiveQuery(tableName: "WishCart", { db in try await db.query("SELECT * FROM WishesWithTypeName")}) var history
     @BlackbirdLiveModels({db in
-        try await Type.read(from: db)
-    }) var types
+        try await WishType.read(from: db)
+    }) var wishType
     
     var costAsOptionalDouble: Double? {
         guard let cost = Double(cost) else {
@@ -71,7 +71,7 @@ struct WishesView: View {
 //                        Text("Technology").tag(2)
 //                        Text("Food").tag(3)
 //                    })
-                    ForEach(types.results) { currentType in
+                    ForEach(wishType.results) { currentType in
                         Text(currentType.type).tag(currentType.id)
                     }
                 }

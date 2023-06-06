@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CA0D34F02992BFCC00C4FC04 /* SingleWishResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0D34EF2992BFCC00C4FC04 /* SingleWishResultView.swift */; };
-		CA1B1C6F2A2FBE5000843ABB /* Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B1C6E2A2FBE5000843ABB /* Type.swift */; };
+		CA1B1C6F2A2FBE5000843ABB /* WishType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B1C6E2A2FBE5000843ABB /* WishType.swift */; };
 		CA1DBE9D29E59BE80008334C /* CartItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1DBE9C29E59BE80008334C /* CartItemsView.swift */; };
 		CA6CA74829907F670068A63C /* WishApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6CA74729907F670068A63C /* WishApp.swift */; };
 		CA6CA74C29907F690068A63C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA6CA74B29907F690068A63C /* Assets.xcassets */; };
@@ -24,7 +24,7 @@
 
 /* Begin PBXFileReference section */
 		CA0D34EF2992BFCC00C4FC04 /* SingleWishResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleWishResultView.swift; sourceTree = "<group>"; };
-		CA1B1C6E2A2FBE5000843ABB /* Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Type.swift; sourceTree = "<group>"; };
+		CA1B1C6E2A2FBE5000843ABB /* WishType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishType.swift; sourceTree = "<group>"; };
 		CA1DBE9C29E59BE80008334C /* CartItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemsView.swift; sourceTree = "<group>"; };
 		CA6CA74429907F660068A63C /* Wish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA6CA74729907F670068A63C /* WishApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishApp.swift; sourceTree = "<group>"; };
@@ -92,7 +92,7 @@
 			children = (
 				CA999BF82A2BAA54000504E5 /* db.sqlite */,
 				CA6CA75D29907FF80068A63C /* WishCart.swift */,
-				CA1B1C6E2A2FBE5000843ABB /* Type.swift */,
+				CA1B1C6E2A2FBE5000843ABB /* WishType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -202,7 +202,7 @@
 				CA999BFB2A2BBB48000504E5 /* HomeView.swift in Sources */,
 				CA1DBE9D29E59BE80008334C /* CartItemsView.swift in Sources */,
 				CA6CA75C29907FDC0068A63C /* CartView.swift in Sources */,
-				CA1B1C6F2A2FBE5000843ABB /* Type.swift in Sources */,
+				CA1B1C6F2A2FBE5000843ABB /* WishType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

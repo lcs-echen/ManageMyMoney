@@ -8,7 +8,7 @@
 import Foundation
 import Blackbird
 
-struct Type: BlackbirdModel {
+struct WishType: BlackbirdModel {
     @BlackbirdColumn var id: Int
     @BlackbirdColumn var type: String
 }
