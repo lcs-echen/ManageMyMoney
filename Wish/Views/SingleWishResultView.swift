@@ -8,15 +8,20 @@ import Blackbird
 import SwiftUI
 
 struct SingleWishResultView: View {
-    var priorResult: WishCart
+    
+    var amount = "1"
+    var name = ""
+    var rating = 3
+    var totalCost = ""
+    var type = ""
     
     var formattedAmount: String {
-        return Double(priorResult.amount)!.formatted(.number.precision(.fractionLength(0)))
+        return Double(amount)!.formatted(.number.precision(.fractionLength(0)))
     }
     
     var body: some View {
         VStack (alignment: .leading, spacing: 9.0){
-            Text(priorResult.name)
+            Text(name)
                 .font(Font.system(size: 25))
                 .fontWeight(.semibold)
             HStack(alignment: .center) {
@@ -31,13 +36,13 @@ struct SingleWishResultView: View {
                     .foregroundColor(.gray)
                     .fontWeight(.bold)
                 
-                Text("\(priorResult.rating)/4❤️")
+                Text("\(rating)/4❤️")
                 
                 Spacer()
                 Text("$")
                     .foregroundColor(Color("Orange"))
                     .font(Font.system(size: 20))
-                + Text(priorResult.totalCost)
+                + Text(totalCost)
                     .font(Font.system(size: 32))
                     .fontWeight(.bold)
                     .foregroundColor(Color("Orange"))
@@ -45,7 +50,7 @@ struct SingleWishResultView: View {
                 
             
             }
-            
+            Text(type)
         }
         .padding(.horizontal, 10)
         .padding(.vertical, 5)
@@ -57,7 +62,7 @@ struct SingleWishResultView: View {
 
 struct SingleWishResultView_Previews: PreviewProvider {
     static var previews: some View {
-        SingleWishResultView(priorResult: wish1)
+        SingleWishResultView()
             .environment(\.blackbirdDatabase, AppDatabase.instance)
     }
 }

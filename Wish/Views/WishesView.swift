@@ -14,7 +14,7 @@ struct WishesView: View {
     @State var amount: Double = 1
     @State var type: String = ""
     @State var rating: Int = 3
-    @BlackbirdLiveModels({ db in try await WishCart.read(from: db)}) var history
+    @BlackbirdLiveQuery(tableName: "WishCart", { db in try await db.query("SELECT * FROM WishesWithTypeName")}) var history
     var costAsOptionalDouble: Double? {
         guard let cost = Double(cost) else {
             return nil
@@ -63,10 +63,8 @@ struct WishesView: View {
                     TextField("Please enter the type of your wish", text: $type)
                         .padding(.bottom, 10)
                 }
-                Group{
-                    Text("Eagerness: ")
-                        .font(.title2)
-                    Picker(selection: $rating,
+                
+                Picker(selection: $rating,
                            label: Text("Picker Name"),
                            content: {
                         Text("❤️").tag(1)
@@ -75,7 +73,7 @@ struct WishesView: View {
                         Text("❤️❤️❤️❤️").tag(4)
                     })
                     .pickerStyle(.segmented)
-                }
+                
                 HStack {
                     Text("Total Cost: ")
                         .font(.title2)

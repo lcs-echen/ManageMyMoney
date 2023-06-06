@@ -12,13 +12,13 @@ struct CartView: View {
     @Environment(\.blackbirdDatabase) var db: Blackbird.Database?
     @Binding var totalSpending: Double
     @State var searchText = ""
-    @BlackbirdLiveModels({ db in try await WishCart.read(from: db)}) var history
+    @BlackbirdLiveQuery(tableName: "WishCart", { db in try await db.query("SELECT * FROM WishesWithTypeName")}) var history
     var body: some View {
         NavigationView {
             VStack (alignment: .leading){
-
-                CartItemsView(filteredOn: searchText)
-                    .searchable(text: $searchText)
+                CartItemsView()
+//                CartItemsView(filteredOn: searchText)
+//                    .searchable(text: $searchText)
                 
                 
                 Spacer()
@@ -44,8 +44,9 @@ struct CartView: View {
                     // Create a running total that is zero
                     var total = 0.0
                     // Iterate over each item and add to the running total
-                    for item in history.results {
-                        if let nextValue = try? Double(item.totalCost, format: .currency(code: "CAD")) {
+                    for result in history.results {
+                        if let totalCost = result["totalCost"]?.stringValue,
+                            let nextValue = try? Double(totalCost, format: .currency(code: "CAD")) {
                             total += nextValue
                         }
                     }

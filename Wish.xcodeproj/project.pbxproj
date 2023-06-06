@@ -18,7 +18,7 @@
 		CA999BF92A2BAA54000504E5 /* db.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = CA999BF82A2BAA54000504E5 /* db.sqlite */; };
 		CA999BFB2A2BBB48000504E5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA999BFA2A2BBB48000504E5 /* HomeView.swift */; };
 		CAC2A70A29DDD1A80060E02D /* Blackbird in Frameworks */ = {isa = PBXBuildFile; productRef = CAC2A70929DDD1A80060E02D /* Blackbird */; };
-		CAC2A70D29DDD1CB0060E02D /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC2A70C29DDD1CB0060E02D /* File.swift */; };
+		CAC2A70D29DDD1CB0060E02D /* AppDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC2A70C29DDD1CB0060E02D /* AppDatabase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +33,7 @@
 		CA6CA75D29907FF80068A63C /* WishCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishCart.swift; sourceTree = "<group>"; };
 		CA999BF82A2BAA54000504E5 /* db.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = db.sqlite; sourceTree = SOURCE_ROOT; };
 		CA999BFA2A2BBB48000504E5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		CAC2A70C29DDD1CB0060E02D /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		CAC2A70C29DDD1CB0060E02D /* AppDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDatabase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +109,7 @@
 		CAC2A70B29DDD1B60060E02D /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				CAC2A70C29DDD1CB0060E02D /* File.swift */,
+				CAC2A70C29DDD1CB0060E02D /* AppDatabase.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -193,7 +193,7 @@
 			files = (
 				CA0D34F02992BFCC00C4FC04 /* SingleWishResultView.swift in Sources */,
 				CA6CA75A29907FCC0068A63C /* WishesView.swift in Sources */,
-				CAC2A70D29DDD1CB0060E02D /* File.swift in Sources */,
+				CAC2A70D29DDD1CB0060E02D /* AppDatabase.swift in Sources */,
 				CA6CA74829907F670068A63C /* WishApp.swift in Sources */,
 				CA6CA75E29907FF80068A63C /* WishCart.swift in Sources */,
 				CA999BFB2A2BBB48000504E5 /* HomeView.swift in Sources */,

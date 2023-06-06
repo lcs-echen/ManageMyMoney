@@ -12,9 +12,9 @@ struct WishCart: BlackbirdModel {
     @BlackbirdColumn var name: String
     @BlackbirdColumn var totalCost: String
     @BlackbirdColumn var amount: String
-    @BlackbirdColumn var type: String
+    @BlackbirdColumn var type_id: Int
     @BlackbirdColumn var rating: Int
     @BlackbirdColumn var completed: Bool
 }
 
-let wish1 = WishCart(id: 2, name: "Apple", totalCost: "100.00", amount: "20", type: "Fruit", rating: 4, completed: false)
+let wish1 = WishCart(id: 2, name: "Apple", totalCost: "100.00", amount: "20", type_id: 3, rating: 4, completed: false)
