@@ -11,11 +11,15 @@ import Blackbird
 struct TypeView: View {
     @Environment(\.blackbirdDatabase) var db: Blackbird.Database?
     @State var showingAddTypeView = false
+    @BlackbirdLiveModels({db in
+        try await WishType.read(from: db)
+    }) var wishType
     var body: some View {
         NavigationView {
-            List {
-                Text("Food")
-                Text("Drink")
+            VStack{
+                List(wishType.results) { currentType in
+                    Text(currentType.type)
+                }
             }
             .navigationTitle("Types")
             .toolbar {
