@@ -14,7 +14,7 @@ struct CartView: View {
     @State var searchText = ""
     @BlackbirdLiveQuery(tableName: "WishCart", { db in try await db.query("SELECT * FROM WishesWithTypeName")}) var history
     var body: some View {
-        NavigationView {
+
             VStack (alignment: .leading){
                 CartItemsView()
 //                CartItemsView(filteredOn: searchText)
@@ -55,9 +55,9 @@ struct CartView: View {
                 }
                 
             }
-            .navigationTitle("Cart")
+
             
-        }
+        
         
     }
 }

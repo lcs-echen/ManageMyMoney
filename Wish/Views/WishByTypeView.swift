@@ -11,29 +11,48 @@ import SwiftUI
 
 struct WishByTypeView: View {
     @Environment(\.blackbirdDatabase) var db: Blackbird.Database?
-    
-    @BlackbirdLiveQuery(tableName: "WishCart", { db in try await db.query("SELECT * FROM TypeWithStatistics")}) var history
+    var typeId: Int
+    @BlackbirdLiveQuery var history: Blackbird.LiveResults<Blackbird.Row>
     
     var body: some View {
-        
         List {
-            Text("A")
-            Text("B")
-            Text("C")
+            ForEach(history.results, id: \.self) { history in
+                
+                if  let name = history["name"]?.stringValue,
+                    let amount = history["amount"]?.stringValue,
+                    let totalCost = history["totalCost"]?.stringValue,
+                    let rating = history["rating"]?.intValue,
+                    let type = history["type"]?.stringValue {
+                    
+                    SingleWishResultView(amount: amount, name: name, rating: rating, totalCost: totalCost, type: type)
+                    
+                }
             }
-        
-            }
-//            .onDelete(perform: removeRows)
+            
         }
         
+        
+    }
     
+    // MARK: Initializers
+            init(typeId: Int) {
+                
+                // Initialize the live query
+                _history = BlackbirdLiveQuery(tableName: "WishType", { db in
+                    try await db.query("SELECT * FROM WishesWithTypeNames WHERE type_id = \(typeId)")
+                })
+                
+                self.typeId = typeId
+            }
 
     
+    
+}
 
 
 struct WishByTypeView_Previews: PreviewProvider {
     static var previews: some View {
-        WishByTypeView()
+        WishByTypeView(typeId: 1)
             .environment(\.blackbirdDatabase, AppDatabase.instance)
     }
 }

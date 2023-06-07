@@ -11,12 +11,30 @@ import Blackbird
 struct HomeView: View {
     @Environment(\.blackbirdDatabase) var db: Blackbird.Database?
     @State var showingAddWishView = false
+    @BlackbirdLiveQuery(tableName: "WishCart", { db in try await db.query("SELECT * FROM TypeWithStatistics")}) var types
     var body: some View {
         NavigationView {
             List {
-                Text("Food")
-                Text("Drink")
+                ForEach(types.results, id: \.self) { currentType in
+                    
+                    Section(content: {
+                        Text("Movies will go here")
+                    }, header: {
+                        if let typeName = currentType["type"]?.stringValue,
+                           let wishCount = currentType["type_count"]?.intValue,
+                           let wishCostSum = currentType["cost_sum"]?.doubleValue?.formatted()
+                        {
+                            HStack {
+                                Text(typeName)
+                                Spacer()
+                                Text("\(wishCount) wishes / $\(wishCostSum)total")
+                            }
+                        }
+                    })
+                    
+                }
             }
+            .listStyle(.grouped)
             .navigationTitle("My Wish")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
