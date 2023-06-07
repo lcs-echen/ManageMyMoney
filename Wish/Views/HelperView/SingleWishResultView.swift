@@ -46,11 +46,8 @@ struct SingleWishResultView: View {
                     .font(Font.system(size: 32))
                     .fontWeight(.bold)
                     .foregroundColor(Color("Orange"))
-                    
-                
-            
+
             }
-            Text(type)
         }
         .padding(.horizontal, 10)
         .padding(.vertical, 5)

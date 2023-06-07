@@ -10,7 +10,6 @@ import Blackbird
 @main
 struct WishApp: App {
 
-    @State var totalSpending: Double = 0
     var body: some Scene {
         WindowGroup {
             TabView {
@@ -18,10 +17,7 @@ struct WishApp: App {
                     .tabItem {
                         Image(systemName: "sparkles")
                         Text("Wish")}
-                CartView(totalSpending: $totalSpending)
-                    .tabItem {
-                        Image(systemName: "cart")
-                        Text("Cart") }
+
                 TypeView()
                     .tabItem {
                         Image(systemName: "sparkles")
