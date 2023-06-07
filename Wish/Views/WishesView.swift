@@ -12,7 +12,7 @@ struct WishesView: View {
     @State var name: String = ""
     @State var cost: String = ""
     @State var amount: Double = 1
-    @State var type = 1
+    @State var type_id = 1
     @State var rating: Int = 3
     @BlackbirdLiveQuery(tableName: "WishCart", { db in try await db.query("SELECT * FROM WishesWithTypeName")}) var history
     @BlackbirdLiveModels({db in
@@ -61,19 +61,18 @@ struct WishesView: View {
                     Stepper("\(amount.formatted(.number.precision(.fractionLength(0))))", value: $amount, in: 1...100)
                         .padding(.bottom, 15)
                 }
-                Group{
+                HStack{
                     Text("Type: ")
                         .font(.title2)
-//                    Picker(selection: $type,
-//                           label:Text("Select a type"),
-//                           content: {
-//                        Text("Car").tag(1)
-//                        Text("Technology").tag(2)
-//                        Text("Food").tag(3)
-//                    })
-                    ForEach(wishType.results) { currentType in
-                        Text(currentType.type).tag(currentType.id)
-                    }
+                    Picker(selection: $type_id,
+                           label:Text("Select a type"),
+                           content: {
+
+                            ForEach(wishType.results) { currentType in
+                                Text(currentType.type).tag(currentType.id)
+                                }
+                    })
+
                 }
                 
                 Picker(selection: $rating,
@@ -136,13 +135,13 @@ struct WishesView: View {
                             name,
                             totalCost,
                             amount,
-                            type,
+                            type_id,
                             rating)
             }
             // Reset input fields after writing to database
             name = ""
             cost = ""
-            type = 1
+            type_id = 1
             rating = 3
             amount = 1
         }

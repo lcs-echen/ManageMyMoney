@@ -22,6 +22,10 @@ struct WishApp: App {
                     .tabItem {
                         Image(systemName: "cart")
                         Text("Cart") }
+                TypeView()
+                    .tabItem {
+                        Image(systemName: "sparkles")
+                        Text("Wish")}
                     
             }
             .environment(\.blackbirdDatabase, AppDatabase.instance)
