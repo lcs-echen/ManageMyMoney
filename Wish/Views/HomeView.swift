@@ -18,7 +18,9 @@ struct HomeView: View {
                 ForEach(types.results, id: \.self) { currentType in
                     
                     Section(content: {
-                        Text("Movies will go here")
+                        if let typeId = currentType["type_id"]?.intValue {
+                            WishByTypeView(typeId: typeId)
+                        }
                     }, header: {
                         if let typeName = currentType["type"]?.stringValue,
                            let wishCount = currentType["type_count"]?.intValue,

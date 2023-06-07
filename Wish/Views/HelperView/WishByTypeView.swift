@@ -15,7 +15,7 @@ struct WishByTypeView: View {
     @BlackbirdLiveQuery var history: Blackbird.LiveResults<Blackbird.Row>
     
     var body: some View {
-        List {
+
             ForEach(history.results, id: \.self) { history in
                 
                 if  let name = history["name"]?.stringValue,
@@ -28,8 +28,6 @@ struct WishByTypeView: View {
                     
                 }
             }
-            
-        }
         
         
     }
