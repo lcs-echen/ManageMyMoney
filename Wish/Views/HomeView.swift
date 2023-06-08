@@ -19,12 +19,12 @@ struct HomeView: View {
             VStack {
                 List {
                     ForEach(types.results, id: \.self) { currentType in
-                        
-                        Section(content: {
+
+                        NavigationLink(destination: {
                             if let typeId = currentType["type_id"]?.intValue {
                                 WishByTypeView(typeId: typeId)
                             }
-                        }, header: {
+                        }, label: {
                             if let typeName = currentType["type"]?.stringValue,
                                let wishCount = currentType["type_count"]?.intValue,
                                let wishCostSum = currentType["cost_sum"]?.doubleValue?.formatted()
