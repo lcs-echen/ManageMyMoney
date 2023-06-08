@@ -63,7 +63,7 @@ struct WishByTypeView: View {
             
             // Initialize the live query
             _history = BlackbirdLiveQuery(tableName: "WishType", { db in
-                try await db.query("SELECT * FROM WishesWithTypeName WHERE type_id = \(typeId), name LIKE %\(searchText)%")
+                try await db.query("SELECT * FROM WishesWithTypeName WHERE type_id = \(typeId) and name LIKE '%\(searchText)%' ")
             })
             
             self.typeId = typeId
