@@ -29,17 +29,14 @@ struct HomeView: View {
                                let wishCount = currentType["type_count"]?.intValue,
                                let wishCostSum = currentType["cost_sum"]?.doubleValue?.formatted()
                             {
-                                HStack {
-                                    Text(typeName)
-                                    Spacer()
-                                    Text("\(wishCount) wishes / $\(wishCostSum)total")
-                                }
+                                SingleTypeView(typeName: typeName, wishCount: wishCount, wishCostSum: wishCostSum)
                             }
                         })
                         
                     }
                 }
-                .listStyle(.grouped)
+                .padding(.top, 5)
+                .listStyle(.automatic)
                 .navigationTitle("My Wish")
                 .toolbar {
                     ToolbarItem(placement: .primaryAction) {
@@ -89,6 +86,7 @@ struct HomeView: View {
                     totalSpending = total
                 }
             }
+
             
         }
     }

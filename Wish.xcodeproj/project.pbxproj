@@ -12,6 +12,7 @@
 		CA1B1C712A2FC40200843ABB /* AddTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B1C702A2FC40200843ABB /* AddTypeView.swift */; };
 		CA1B1C732A2FC5E100843ABB /* TypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B1C722A2FC5E100843ABB /* TypeView.swift */; };
 		CA1B1C752A30CF6200843ABB /* WishByTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B1C742A30CF6200843ABB /* WishByTypeView.swift */; };
+		CA1B1C792A31570E00843ABB /* SingleTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1B1C782A31570E00843ABB /* SingleTypeView.swift */; };
 		CA1DBE9D29E59BE80008334C /* CartItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1DBE9C29E59BE80008334C /* CartItemsView.swift */; };
 		CA6CA74829907F670068A63C /* WishApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6CA74729907F670068A63C /* WishApp.swift */; };
 		CA6CA74C29907F690068A63C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA6CA74B29907F690068A63C /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 		CA1B1C702A2FC40200843ABB /* AddTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTypeView.swift; sourceTree = "<group>"; };
 		CA1B1C722A2FC5E100843ABB /* TypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeView.swift; sourceTree = "<group>"; };
 		CA1B1C742A30CF6200843ABB /* WishByTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishByTypeView.swift; sourceTree = "<group>"; };
+		CA1B1C782A31570E00843ABB /* SingleTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleTypeView.swift; sourceTree = "<group>"; };
 		CA1DBE9C29E59BE80008334C /* CartItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemsView.swift; sourceTree = "<group>"; };
 		CA6CA74429907F660068A63C /* Wish.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wish.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA6CA74729907F670068A63C /* WishApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishApp.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				CA0D34EF2992BFCC00C4FC04 /* SingleWishResultView.swift */,
+				CA1B1C782A31570E00843ABB /* SingleTypeView.swift */,
 			);
 			path = HelperView;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 			files = (
 				CA0D34F02992BFCC00C4FC04 /* SingleWishResultView.swift in Sources */,
 				CA6CA75A29907FCC0068A63C /* AddWishesView.swift in Sources */,
+				CA1B1C792A31570E00843ABB /* SingleTypeView.swift in Sources */,
 				CA1B1C752A30CF6200843ABB /* WishByTypeView.swift in Sources */,
 				CA1B1C712A2FC40200843ABB /* AddTypeView.swift in Sources */,
 				CAC2A70D29DDD1CB0060E02D /* AppDatabase.swift in Sources */,
