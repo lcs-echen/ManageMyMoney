@@ -14,6 +14,7 @@ struct HomeView: View {
     @BlackbirdLiveQuery(tableName: "WishType", { db in try await db.query("SELECT * FROM TypeWithStatistics")}) var types
     @BlackbirdLiveQuery(tableName: "WishCart", { db in try await db.query("SELECT * FROM WishesWithTypeName")}) var history
     @State var totalSpending: Double = 0
+    @State var searchText = ""
     var body: some View {
         NavigationView {
             VStack {
@@ -21,8 +22,14 @@ struct HomeView: View {
                     ForEach(types.results, id: \.self) { currentType in
                         
                         NavigationLink(destination: {
-                            if let typeId = currentType["type_id"]?.intValue {
-                                WishByTypeView(typeId: typeId)
+                            if let typeId = currentType["type_id"]?.intValue
+//                               let type = currentType["type"]?.stringValue
+                            {
+                                VStack{
+                                    WishByTypeView(typeId: typeId, searchText: searchText)
+                                        .searchable(text: $searchText)
+                                }
+                                .navigationTitle("Car")
                             }
                         }, label: {
                             if let typeName = currentType["type"]?.stringValue,
@@ -62,7 +69,7 @@ struct HomeView: View {
                 }
                 
                 
-
+                
                 
                 
                 Spacer()
@@ -100,9 +107,9 @@ struct HomeView: View {
             }
             .accentColor(Color("Orange"))
         }
+        
     }
 }
-
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()

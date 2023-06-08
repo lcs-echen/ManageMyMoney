@@ -15,27 +15,29 @@ struct WishByTypeView: View {
     @BlackbirdLiveQuery var history: Blackbird.LiveResults<Blackbird.Row>
     
     var body: some View {
-        VStack{
-            List {
-                ForEach(history.results, id: \.self) { history in
-                    
-                    if  let name = history["name"]?.stringValue,
-                        let amount = history["amount"]?.stringValue,
-                        let totalCost = history["totalCost"]?.stringValue,
-                        let rating = history["rating"]?.intValue,
-                        let type = history["type"]?.stringValue {
+
+            VStack{
+                List {
+                    ForEach(history.results, id: \.self) { history in
                         
-                        SingleWishResultView(amount: amount, name: name, rating: rating, totalCost: totalCost, type: type)
-                        
+                        if  let name = history["name"]?.stringValue,
+                            let amount = history["amount"]?.stringValue,
+                            let totalCost = history["totalCost"]?.stringValue,
+                            let rating = history["rating"]?.intValue,
+                            let type = history["type"]?.stringValue {
+                            
+                            SingleWishResultView(amount: amount, name: name, rating: rating, totalCost: totalCost, type: type)
+                            
+                        }
                     }
+                    .onDelete(perform: removeRows)
                 }
-                .onDelete(perform: removeRows)
-            }
-            
-            Spacer()
+                
+                Spacer()
+
         }
     }
-    
+
     // MARK: Function
     func removeRows(at offsets: IndexSet) {
         Task {
@@ -57,15 +59,15 @@ struct WishByTypeView: View {
     }
     
     // MARK: Initializers
-            init(typeId: Int) {
-                
-                // Initialize the live query
-                _history = BlackbirdLiveQuery(tableName: "WishType", { db in
-                    try await db.query("SELECT * FROM WishesWithTypeName WHERE type_id = \(typeId)")
-                })
-                
-                self.typeId = typeId
-            }
+    init(typeId: Int, searchText: String) {
+            
+            // Initialize the live query
+            _history = BlackbirdLiveQuery(tableName: "WishType", { db in
+                try await db.query("SELECT * FROM WishesWithTypeName WHERE type_id = \(typeId), name LIKE %\(searchText)%")
+            })
+            
+            self.typeId = typeId
+        }
 
     
     
@@ -74,8 +76,11 @@ struct WishByTypeView: View {
 
 struct WishByTypeView_Previews: PreviewProvider {
     static var previews: some View {
-        WishByTypeView(typeId: 1)
-            .environment(\.blackbirdDatabase, AppDatabase.instance)
+        NavigationView{
+            WishByTypeView(typeId: 1, searchText: "")
+                .environment(\.blackbirdDatabase, AppDatabase.instance)
+        }
+        
     }
 }
 
