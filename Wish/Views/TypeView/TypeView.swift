@@ -37,7 +37,7 @@ struct TypeView: View {
                 }
             }
         }
-        .accentColor(.orange)
+        .accentColor(Color("Orange"))
     }
 }
 

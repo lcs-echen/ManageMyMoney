@@ -19,7 +19,7 @@ struct HomeView: View {
             VStack {
                 List {
                     ForEach(types.results, id: \.self) { currentType in
-
+                        
                         NavigationLink(destination: {
                             if let typeId = currentType["type_id"]?.intValue {
                                 WishByTypeView(typeId: typeId)
@@ -34,6 +34,14 @@ struct HomeView: View {
                         })
                         
                     }
+                    NavigationLink(destination: {
+                        TypeView()
+                    }, label: {
+                        Text("Edit my wish types")
+                            .padding(.vertical)
+                            .foregroundColor(Color("Orange"))
+                            .fontWeight(.semibold)
+                    })
                     
                 }
                 .listStyle(.automatic)
@@ -53,13 +61,9 @@ struct HomeView: View {
                     }
                 }
                 
+                
 
-                    NavigationLink(destination: {
-                        TypeView()
-                    }, label: {
-                        Text("Edit my wish types")
-                    })
-
+                
                 
                 Spacer()
                 HStack {
@@ -95,8 +99,6 @@ struct HomeView: View {
                 }
             }
             .accentColor(Color("Orange"))
-
-            
         }
     }
 }
@@ -105,6 +107,6 @@ struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
             .environment(\.blackbirdDatabase, AppDatabase.instance)
-
+        
     }
 }

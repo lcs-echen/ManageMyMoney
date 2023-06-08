@@ -9,17 +9,16 @@ import SwiftUI
 import Blackbird
 @main
 struct WishApp: App {
-
+    
     var body: some Scene {
         WindowGroup {
-
-                HomeView()
-                    .tabItem {
-                        Image(systemName: "sparkles")
-                        Text("Wish")}
-
-            .environment(\.blackbirdDatabase, AppDatabase.instance)
-            .accentColor(Color("Orange"))
+            HomeView()
+                .tabItem {
+                    Image(systemName: "sparkles")
+                    Text("Wish")}
+                .environment(\.blackbirdDatabase, AppDatabase.instance)
+                .accentColor(Color("Orange"))
         }
     }
 }
+

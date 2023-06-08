@@ -29,7 +29,7 @@ struct WishByTypeView: View {
                         
                     }
                 }
-//                .onDelete(perform: removeRows)
+                .onDelete(perform: removeRows)
             }
             
             Spacer()
@@ -37,24 +37,24 @@ struct WishByTypeView: View {
     }
     
     // MARK: Function
-//    func removeRows(at offsets: IndexSet) {
-//        Task{
-//            if  let id = history["id"]?.intValue {
-//
-//                try await db!.transaction{ core in
-//                    var idList = ""
-//                    for offset in offsets{
-//                        idList += "\(history.results[offset].id),"
-//                    }
-//                    print(idList)
-//                    idList.removeLast()
-//                    print(idList)
-//
-//                    try core.query("DELETE FROM WishCart WHERE id IN (?)",idList)
-//                }
-//            }
-//        }
-//    }
+    func removeRows(at offsets: IndexSet) {
+        Task {
+            try await db!.transaction{ core in
+            var idList = ""
+            for offset in offsets{
+                if let id = history.results[offset]["id"]?.intValue {
+                    idList += "\(id),"
+                }
+            }
+            print(idList)
+            idList.removeLast()
+            print(idList)
+
+            try core.query("DELETE FROM WishCart WHERE id IN (?)",idList)
+        }
+            
+        }
+    }
     
     // MARK: Initializers
             init(typeId: Int) {
