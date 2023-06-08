@@ -15,22 +15,46 @@ struct WishByTypeView: View {
     @BlackbirdLiveQuery var history: Blackbird.LiveResults<Blackbird.Row>
     
     var body: some View {
-
-            ForEach(history.results, id: \.self) { history in
-                
-                if  let name = history["name"]?.stringValue,
-                    let amount = history["amount"]?.stringValue,
-                    let totalCost = history["totalCost"]?.stringValue,
-                    let rating = history["rating"]?.intValue,
-                    let type = history["type"]?.stringValue {
+        VStack{
+            List {
+                ForEach(history.results, id: \.self) { history in
                     
-                    SingleWishResultView(amount: amount, name: name, rating: rating, totalCost: totalCost, type: type)
-                    
+                    if  let name = history["name"]?.stringValue,
+                        let amount = history["amount"]?.stringValue,
+                        let totalCost = history["totalCost"]?.stringValue,
+                        let rating = history["rating"]?.intValue,
+                        let type = history["type"]?.stringValue {
+                        
+                        SingleWishResultView(amount: amount, name: name, rating: rating, totalCost: totalCost, type: type)
+                        
+                    }
                 }
+//                .onDelete(perform: removeRows)
             }
-        
-        
+            
+            Spacer()
+        }
     }
+    
+    // MARK: Function
+//    func removeRows(at offsets: IndexSet) {
+//        Task{
+//            if  let id = history["id"]?.intValue {
+//
+//                try await db!.transaction{ core in
+//                    var idList = ""
+//                    for offset in offsets{
+//                        idList += "\(history.results[offset].id),"
+//                    }
+//                    print(idList)
+//                    idList.removeLast()
+//                    print(idList)
+//
+//                    try core.query("DELETE FROM WishCart WHERE id IN (?)",idList)
+//                }
+//            }
+//        }
+//    }
     
     // MARK: Initializers
             init(typeId: Int) {

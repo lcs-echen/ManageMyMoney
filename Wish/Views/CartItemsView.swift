@@ -1,39 +1,33 @@
+////
+////  CartItemsView.swift
+////  ManageMyMoney
+////
+////  Created by Evelyn Chen on 2023-04-11.
+////
 //
-//  CartItemsView.swift
-//  ManageMyMoney
+//import Blackbird
+//import SwiftUI
 //
-//  Created by Evelyn Chen on 2023-04-11.
+//struct CartItemsView: View {
+//    @Environment(\.blackbirdDatabase) var db: Blackbird.Database?
 //
-
-import Blackbird
-import SwiftUI
-
-struct CartItemsView: View {
-    @Environment(\.blackbirdDatabase) var db: Blackbird.Database?
-    
-    @BlackbirdLiveQuery(tableName: "WishCart", { db in try await db.query("SELECT * FROM WishesWithTypeName")}) var history
-    
-    var body: some View {
-        
-        List {
-            ForEach(history.results, id: \.self) { history in
-                
-                if  let name = history["name"]?.stringValue,
-                        let amount = history["amount"]?.stringValue,
-                        let totalCost = history["totalCost"]?.stringValue,
-                        let rating = history["rating"]?.intValue,
-                        let type = history["type"]?.stringValue {
-                    
-                    SingleWishResultView(amount: amount, name: name, rating: rating, totalCost: totalCost, type: type)
-                    
-                }
-            }
-        
-                
-//                Label(title: {
+//    @BlackbirdLiveQuery(tableName: "WishCart", { db in try await db.query("SELECT * FROM WishesWithTypeName")}) var history
 //
-//                    SingleWishResultView(amount: amount, name: name, rating: rating, totalCost: totalCost)
+//    var body: some View {
+//
+//        List {
+//            ForEach(history.results, id: \.self) { history in
+//
+//            Label(title: {
+//                if  let name = history["name"]?.stringValue,
+//                        let amount = history["amount"]?.stringValue,
+//                        let totalCost = history["totalCost"]?.stringValue,
+//                        let rating = history["rating"]?.intValue,
+//                        let type = history["type"]?.stringValue {
+//
+//                    SingleWishResultView(amount: amount, name: name, rating: rating, totalCost: totalCost, type: type)
 //                }, icon: {
+//                    if let
 //                    if history.completed == true {
 //                        Image(systemName: "checkmark.circle")
 //                    } else {
@@ -47,11 +41,11 @@ struct CartItemsView: View {
 //                        }
 //                    }
 //                }
-            }
+//            })
 //            .onDelete(perform: removeRows)
-        }
-        
-    
+//        }
+//
+//
 //    init(filteredOn searchText: String){
 //        _history = BlackbirdLiveModels({
 //            db in
@@ -78,13 +72,13 @@ struct CartItemsView: View {
 //            }
 //        }
 //    }
-    
-}
-
-struct CartItemsView_Previews: PreviewProvider {
-    static var previews: some View {
-        CartItemsView()
-            .environment(\.blackbirdDatabase, AppDatabase.instance)
-    }
-}
-
+//
+//}
+//
+//struct CartItemsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CartItemsView()
+//            .environment(\.blackbirdDatabase, AppDatabase.instance)
+//    }
+//}
+//

@@ -64,6 +64,7 @@ struct AddWishesView: View {
                 HStack{
                     Text("Type: ")
                         .font(.title2)
+                    Spacer()
                     Picker(selection: $type_id,
                            label:Text("Select a type"),
                            content: {

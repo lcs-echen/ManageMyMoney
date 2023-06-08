@@ -34,8 +34,8 @@ struct HomeView: View {
                         })
                         
                     }
+                    
                 }
-                .padding(.top, 5)
                 .listStyle(.automatic)
                 .navigationTitle("My Wish")
                 .toolbar {
@@ -52,6 +52,14 @@ struct HomeView: View {
                         
                     }
                 }
+                
+
+                    NavigationLink(destination: {
+                        TypeView()
+                    }, label: {
+                        Text("Edit my wish types")
+                    })
+
                 
                 Spacer()
                 HStack {
@@ -86,6 +94,7 @@ struct HomeView: View {
                     totalSpending = total
                 }
             }
+            .accentColor(Color("Orange"))
 
             
         }
