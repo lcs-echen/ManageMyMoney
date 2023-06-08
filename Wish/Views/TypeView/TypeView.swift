@@ -15,30 +15,28 @@ struct TypeView: View {
         try await WishType.read(from: db)
     }) var wishType
     var body: some View {
-        NavigationView {
-            VStack{
-                List{
-                    ForEach(wishType.results) { currentType in
-                        Text(currentType.type)
-                    }
-                    .onDelete(perform: removeRows)
+        VStack{
+            List{
+                ForEach(wishType.results) { currentType in
+                    Text(currentType.type)
                 }
+                .onDelete(perform: removeRows)
             }
-            
-            .navigationTitle("Types")
-            .toolbar {
-                ToolbarItem(placement: .primaryAction) {
-                    Button(action: {
-                        showingAddTypeView = true
-                    }, label: {
-                        Image(systemName: "plus")
-                    })
-                    .sheet(isPresented: $showingAddTypeView) {
-                        AddTypeView()
-                            .presentationDetents([.fraction(0.2)])
-                    }
-
+        }
+        
+        .navigationTitle("Types")
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button(action: {
+                    showingAddTypeView = true
+                }, label: {
+                    Image(systemName: "plus")
+                })
+                .sheet(isPresented: $showingAddTypeView) {
+                    AddTypeView()
+                        .presentationDetents([.fraction(0.2)])
                 }
+
             }
         }
         .accentColor(Color("Orange"))
@@ -55,7 +53,7 @@ struct TypeView: View {
                         idList.removeLast()
                         print(idList)
     
-                        try core.query("DELETE FROM WishCart WHERE id IN (?)",idList)
+                        try core.query("DELETE FROM WishType WHERE id IN (?)",idList)
                     }
             }
         }
@@ -63,7 +61,9 @@ struct TypeView: View {
 
 struct TypeView_Previews: PreviewProvider {
     static var previews: some View {
-        TypeView()
-            .environment(\.blackbirdDatabase, AppDatabase.instance)
+        NavigationView {
+            TypeView()
+                .environment(\.blackbirdDatabase, AppDatabase.instance)
+        }
     }
 }

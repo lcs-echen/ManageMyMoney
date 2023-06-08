@@ -114,7 +114,6 @@ struct AddWishesView: View {
         
     }
 
-    
     //MARK: Function
     func addWish() {
         Task {

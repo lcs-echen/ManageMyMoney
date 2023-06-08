@@ -11,7 +11,7 @@ import Blackbird
 struct HomeView: View {
     @Environment(\.blackbirdDatabase) var db: Blackbird.Database?
     @State var showingAddWishView = false
-    @BlackbirdLiveQuery(tableName: "WishCart", { db in try await db.query("SELECT * FROM TypeWithStatistics")}) var types
+    @BlackbirdLiveQuery(tableName: "WishType", { db in try await db.query("SELECT * FROM TypeWithStatistics")}) var types
     @BlackbirdLiveQuery(tableName: "WishCart", { db in try await db.query("SELECT * FROM WishesWithTypeName")}) var history
     @State var totalSpending: Double = 0
     var body: some View {
