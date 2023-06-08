@@ -33,6 +33,7 @@ struct AddTypeView: View {
                         }
 
         }
+        .accentColor(Color("Orange"))
        
     }
     

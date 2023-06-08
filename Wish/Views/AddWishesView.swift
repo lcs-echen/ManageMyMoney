@@ -1,5 +1,5 @@
 //
-//  WishesView.swift
+//  AddWishesView.swift
 //  ManageMyMoney
 //
 //  Created by Evelyn Chen on 2023-02-05.
@@ -7,7 +7,7 @@
 import Blackbird
 import SwiftUI
 
-struct WishesView: View {
+struct AddWishesView: View {
     @Environment(\.blackbirdDatabase) var db: Blackbird.Database?
     @State var name: String = ""
     @State var cost: String = ""
@@ -109,8 +109,10 @@ struct WishesView: View {
                             }
                         }
         }
+        .accentColor(Color("Orange"))
         
     }
+
     
     //MARK: Function
     func addWish() {
@@ -148,10 +150,10 @@ struct WishesView: View {
     }
 }
 
-struct WishesView_Previews: PreviewProvider {
+struct AddWishesView_Previews: PreviewProvider {
     static var previews: some View {
  
-        WishesView()
+        AddWishesView()
             .environment(\.blackbirdDatabase, AppDatabase.instance)
 
     }

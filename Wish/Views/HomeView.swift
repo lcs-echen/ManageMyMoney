@@ -49,7 +49,7 @@ struct HomeView: View {
                             Image(systemName: "plus")
                         })
                         .sheet(isPresented: $showingAddWishView) {
-                            WishesView()
+                            AddWishesView()
                                 .presentationDetents([.fraction(0.65)])
                         }
                         
