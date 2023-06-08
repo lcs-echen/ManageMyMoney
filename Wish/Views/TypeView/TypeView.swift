@@ -17,10 +17,14 @@ struct TypeView: View {
     var body: some View {
         NavigationView {
             VStack{
-                List(wishType.results) { currentType in
-                    Text(currentType.type)
+                List{
+                    ForEach(wishType.results) { currentType in
+                        Text(currentType.type)
+                    }
+                    .onDelete(perform: removeRows)
                 }
             }
+            
             .navigationTitle("Types")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
@@ -39,6 +43,22 @@ struct TypeView: View {
         }
         .accentColor(Color("Orange"))
     }
+        func removeRows(at offsets: IndexSet) {
+            Task{
+    
+                    try await db!.transaction{ core in
+                        var idList = ""
+                        for offset in offsets{
+                            idList += "\(wishType.results[offset].id),"
+                        }
+                        print(idList)
+                        idList.removeLast()
+                        print(idList)
+    
+                        try core.query("DELETE FROM WishCart WHERE id IN (?)",idList)
+                    }
+            }
+        }
 }
 
 struct TypeView_Previews: PreviewProvider {
