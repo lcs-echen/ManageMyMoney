@@ -25,11 +25,10 @@ struct HomeView: View {
                             if let typeId = currentType["type_id"]?.intValue
 //                               let type = currentType["type"]?.stringValue
                             {
-                                VStack{
+
                                     WishByTypeView(typeId: typeId, searchText: searchText)
                                         .searchable(text: $searchText)
-                                }
-                                .navigationTitle("Car")
+                                        .navigationTitle("Car")
                             }
                         }, label: {
                             if let typeName = currentType["type"]?.stringValue,
