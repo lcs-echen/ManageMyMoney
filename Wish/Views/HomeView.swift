@@ -22,13 +22,15 @@ struct HomeView: View {
                     ForEach(types.results, id: \.self) { currentType in
                         
                         NavigationLink(destination: {
-                            if let typeId = currentType["type_id"]?.intValue
-//                               let type = currentType["type"]?.stringValue
+                            if let typeId = currentType["type_id"]?.intValue,
+                               let type = currentType["type"]?.stringValue
                             {
 
-                                    WishByTypeView(typeId: typeId, searchText: searchText)
+                                    WishByTypeView(typeId: typeId, searchText: searchText, typeName: type)
                                         .searchable(text: $searchText)
-                                        .navigationTitle("Car")
+    
+                            } else {
+                                Text("No value found.")
                             }
                         }, label: {
                             if let typeName = currentType["type"]?.stringValue,
