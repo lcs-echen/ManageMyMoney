@@ -11,6 +11,7 @@ import Blackbird
 struct HomeView: View {
     @Environment(\.blackbirdDatabase) var db: Blackbird.Database?
     @State var showingAddWishView = false
+    @State var showingTypeView = false
     @BlackbirdLiveQuery(tableName: "WishCart", { db in try await db.query("SELECT * FROM TypeWithStatistics")}) var types
     @BlackbirdLiveQuery(tableName: "WishCart", { db in try await db.query("SELECT * FROM WishesWithTypeName")}) var history
     @State var totalSpending: Double = 0
@@ -19,6 +20,17 @@ struct HomeView: View {
         NavigationView {
             VStack {
                 List {
+                    NavigationLink(destination: {
+                        TypeView()
+                    }, label: {
+                        HStack {
+                            Image(systemName: "text.badge.plus")
+                                .foregroundColor(Color("Orange"))
+                            Text("Edit my wish types")
+                                .foregroundColor(Color("Orange"))
+                                .fontWeight(.semibold)
+                        }
+                    })
                     ForEach(types.results, id: \.self) { currentType in
                         
                         NavigationLink(destination: {
@@ -41,14 +53,7 @@ struct HomeView: View {
                         })
                         
                     }
-                    NavigationLink(destination: {
-                        TypeView()
-                    }, label: {
-                        Text("Edit my wish types")
-                            .padding(.vertical)
-                            .foregroundColor(Color("Orange"))
-                            .fontWeight(.semibold)
-                    })
+                    
                     
                 }
                 .listStyle(.automatic)
@@ -67,7 +72,7 @@ struct HomeView: View {
                         
                     }
                 }
-                
+
                 
                 
                 
