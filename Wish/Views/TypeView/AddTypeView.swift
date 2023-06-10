@@ -15,12 +15,13 @@ struct AddTypeView: View {
     var body: some View {
         NavigationView{
 
-            HStack {
+            HStack(alignment: .top)  {
                 Text("Type: ")
-                    .font(.title2)
+                    .font(.title3)
                 TextField("Please enter the type you want to add", text: $type)
                     .padding(.bottom, 10)
             }
+            .padding(.horizontal)
             .toolbar {
                             ToolbarItem(placement: .primaryAction) {
                                 Button(action: {

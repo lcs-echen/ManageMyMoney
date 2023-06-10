@@ -11,7 +11,7 @@ import Blackbird
 struct HomeView: View {
     @Environment(\.blackbirdDatabase) var db: Blackbird.Database?
     @State var showingAddWishView = false
-    @BlackbirdLiveQuery(tableName: "WishType", { db in try await db.query("SELECT * FROM TypeWithStatistics")}) var types
+    @BlackbirdLiveQuery(tableName: "WishCart", { db in try await db.query("SELECT * FROM TypeWithStatistics")}) var types
     @BlackbirdLiveQuery(tableName: "WishCart", { db in try await db.query("SELECT * FROM WishesWithTypeName")}) var history
     @State var totalSpending: Double = 0
     @State var searchText = ""
@@ -25,8 +25,7 @@ struct HomeView: View {
                             if let typeId = currentType["type_id"]?.intValue,
                                let type = currentType["type"]?.stringValue
                             {
-
-                                    WishByTypeView(typeId: typeId, searchText: searchText, typeName: type)
+                                WishByTypeView(typeId: typeId, searchText: searchText, typeName: type)
                                         .searchable(text: $searchText)
     
                             } else {

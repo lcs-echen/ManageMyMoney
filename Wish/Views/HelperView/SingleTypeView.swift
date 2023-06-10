@@ -18,13 +18,16 @@ struct SingleTypeView: View {
                 .fontWeight(.semibold)
         
             HStack {
-                Text("x \(wishCount)")
-                    .font(.subheadline)
-                    .frame(width: 30, height: 30)
-                    .overlay(RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.gray, lineWidth: 3))
-                    .foregroundColor(.gray)
-                    .fontWeight(.bold)
+                HStack{
+                    Text("x \(wishCount)")
+                        .font(.subheadline)
+                        .frame(width: 30, height: 30)
+                        .overlay(RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.gray, lineWidth: 3))
+                        .foregroundColor(.gray)
+                        .fontWeight(.bold)
+                }
+            
                 Group {
                     Text("$")
                         .foregroundColor(Color("Orange"))

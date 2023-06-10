@@ -15,15 +15,9 @@ struct WishByTypeView: View {
     let typeName: String
     @BlackbirdLiveQuery var history: Blackbird.LiveResults<Blackbird.Row>
     @BlackbirdLiveQuery(tableName: "WishType", { db in try await db.query("SELECT * FROM TypeWithStatistics")}) var types
-//    var type: String {
-//        guard let type = types["type"]?.stringValue else {
-//            return ""
-//        }
-//        return type
-//    }
+
     
     var body: some View {
-
             VStack{
                 List {
                     ForEach(history.results, id: \.self) { history in

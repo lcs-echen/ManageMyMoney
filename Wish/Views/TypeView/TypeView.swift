@@ -36,27 +36,28 @@ struct TypeView: View {
                     AddTypeView()
                         .presentationDetents([.fraction(0.2)])
                 }
-
+                
             }
         }
         .accentColor(Color("Orange"))
     }
-        func removeRows(at offsets: IndexSet) {
-            Task{
     
-                    try await db!.transaction{ core in
-                        var idList = ""
-                        for offset in offsets{
-                            idList += "\(wishType.results[offset].id),"
-                        }
-                        print(idList)
-                        idList.removeLast()
-                        print(idList)
-    
-                        try core.query("DELETE FROM WishType WHERE id IN (?)",idList)
-                    }
+    func removeRows(at offsets: IndexSet) {
+        Task{
+            
+            try await db!.transaction{ core in
+                var idList = ""
+                for offset in offsets{
+                    idList += "\(wishType.results[offset].id),"
+                }
+                print(idList)
+                idList.removeLast()
+                print(idList)
+                
+                try core.query("DELETE FROM WishType WHERE id IN (?)",idList)
             }
         }
+    }
 }
 
 struct TypeView_Previews: PreviewProvider {
