@@ -23,8 +23,8 @@ struct WishByTypeView: View {
                     ForEach(history.results, id: \.self) { history in
                         
                         if  let name = history["name"]?.stringValue,
-                            let amount = history["amount"]?.stringValue,
-                            let totalCost = history["totalCost"]?.stringValue,
+                            let amount = history["amount"]?.intValue,
+                            let totalCost = history["totalCost"]?.doubleValue,
                             let rating = history["rating"]?.intValue,
                             let type = history["type"]?.stringValue {
                             

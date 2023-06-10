@@ -28,13 +28,13 @@ struct AddWishesView: View {
         }
         return cost
     }
-    var totalCost: String {
+    var totalCost: Double {
         guard let cost = costAsOptionalDouble else {
-            return "Please return a positive numeric value for the estimated cost"
+            return 0.00
         }
         
         let totalCost = cost * amount
-        return totalCost.formatted(.number.precision(.fractionLength(2)))
+        return totalCost
     }
     var body: some View {
         
@@ -90,7 +90,7 @@ struct AddWishesView: View {
                     Text("Total Cost: ")
                         .font(.title2)
                     Spacer()
-                    Text(totalCost)
+                    Text("\(totalCost.formatted(.number.precision(.fractionLength(2))))")
                         .font(.title2)
                         .multilineTextAlignment(.trailing)
                 }

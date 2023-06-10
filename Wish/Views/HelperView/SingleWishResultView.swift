@@ -9,15 +9,13 @@ import SwiftUI
 
 struct SingleWishResultView: View {
     
-    var amount = "1"
+    var amount = 1
     var name = ""
     var rating = 3
-    var totalCost = ""
+    var totalCost = 0.00
     var type = ""
     
-    var formattedAmount: String {
-        return Double(amount)!.formatted(.number.precision(.fractionLength(0)))
-    }
+
     
     var body: some View {
         VStack (alignment: .leading, spacing: 9.0){
@@ -27,7 +25,7 @@ struct SingleWishResultView: View {
             HStack(alignment: .center) {
                 Group {
                     Text("x")
-                    + Text(formattedAmount)
+                    + Text("\(amount)")
                 }
                     .font(.subheadline)
                     .frame(width: 30, height: 30)
@@ -39,13 +37,15 @@ struct SingleWishResultView: View {
                 Text("\(rating)/4❤️")
                 
                 Spacer()
-                Text("$")
-                    .foregroundColor(Color("Orange"))
-                    .font(Font.system(size: 20))
-                + Text(totalCost)
-                    .font(Font.system(size: 32))
-                    .fontWeight(.bold)
-                    .foregroundColor(Color("Orange"))
+
+                    Text("$ \(totalCost.formatted(.number.precision(.fractionLength(2))))")
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
+                        .font(Font.system(size: 32))
+                        .fontWeight(.bold)
+                        .foregroundColor(Color("Orange"))
+                        
+
 
             }
         }
